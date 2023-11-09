@@ -1,0 +1,378 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+html,body{
+ width: 100%;
+ height: 100%;
+ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+ 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+ sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+:root{
+    --MColor: #1a9acf;
+    --SColor: #9d2430;
+    --WColor: #fff;
+    --Hcolor:#ddd;
+    --HScolor:#ebebeb;
+    --blue-linear: linear-gradient(135deg, #1A9ACF 0%, #A5E5FF 100%);
+    
+}
+.container{
+    padding: 0px!important;
+   
+}
+/* @media (max-width:2560px){
+    .container{
+       max-width: 1825px;
+       width: 100%;
+       
+    }
+}
+@media (max-width:1440px){
+    .container{
+       max-width:1320px;
+       width: 100%;
+       
+    }
+} */
+
+.TopNav{
+    background-color: var(--MColor);
+    color: var(--WColor);
+    height:35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 2em;
+    border-bottom: 2px solid var(--SColor);
+}
+
+.TopItems{
+    display: flex;
+    align-items: center;
+    gap:20px;
+    margin: 0;
+    padding: 0;
+}
+.TopItems li{
+    list-style: none;
+} 
+.TopItems li:hover{
+    color: var(--Hcolor);
+}
+.AR{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+.AL{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+
+.MainLogo img{
+    width: 100px;
+    padding: 10px 0px;
+}
+.MainLogo span{
+    font-size:20px;
+    text-transform: uppercase;
+    color: var(--SColor);
+    font-weight: bold;
+   letter-spacing: 2px;
+}
+.SearchForm input{
+    border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.SearchForm input,.SearchForm button{
+    border:1px solid var(--MColor);
+   padding: 5px 10px;
+  
+}
+.SearchForm input:focus{
+    outline: 0px;
+}
+.SearchForm button{
+    background-color: var(--MColor);
+    color: var(--WColor);
+}
+.navbar{
+    background-color: var(--SColor);
+    padding: 0px;
+}
+.navbar-nav .nav-item .nav-link{
+    color: var(--WColor);
+}
+
+@media (max-width: 768px){
+    .DN{
+        display: none;
+    }
+    .TopItems .email{
+        display: none;
+    }
+    .navbar-toggler{
+        border-color: transparent;
+    }
+    .navbar-toggler:focus{
+        box-shadow: none;
+    }
+}
+@media (max-width:425px){
+    .DN{
+        display: none;
+    }
+    .AR{
+        justify-content: flex-start;
+    }
+    .SearchForm {
+       display: block;
+     
+       padding: 10px;
+    }
+    .SearchForm input{
+        width: 90%;
+    }
+}
+
+.MainTrending{
+    background: var(--blue-linear);
+    min-height:65vh;
+    height: 100%;
+}
+.TTitle{
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--WColor);
+    padding: 20px 0px 30px 0px;
+}
+.TItemsBox{
+    background-color: #fff;
+    width: 90%;
+    margin: auto;
+}
+.CIMG{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.CIMG img{
+    height: 100%;
+    object-fit: cover;
+}
+.CTitle{
+    background-color: var(--SColor);
+    color: var(--WColor);
+    padding: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.CompanyIntro{
+    padding: 50px 0px;
+}
+.CImages{
+    height:600px;
+    overflow: hidden;
+}
+.CImages img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.CContent{
+    margin-top: 100px;
+}
+.CContent h1{
+    color: var(--SColor);
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+.CContent p{
+    font-size: 1rem;
+    line-height: 28px;
+    text-align: justify;
+
+}
+.CContent p span{
+    color: var(--SColor);
+}
+.BTNSSS{
+    border:1px solid var(--SColor);
+    background-color:var(--SColor);
+    color: var(--WColor);
+    padding: 10px 20px;
+    border-radius:20px;
+}
+.slick-slider{
+    position: relative;
+}
+.slick-dots{
+   position: absolute;
+   top: -80px;
+   text-align: right;
+}
+.slick-dots li button:before{
+    color: var(--SColor);
+}
+
+.MainServices{
+    background-color:var(--HScolor);
+}
+.STitle{
+    text-align: center;
+    padding: 50px 0px;
+}   
+.STitle h1{
+    color: var(--SColor);
+    font-size: 40px;
+    font-weight: 800;
+}
+.STitle p span{
+    color: var(--SColor);
+}
+.SBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.SBox div{
+    border:1px solid var(--SColor);
+    padding:20px 5px;
+    margin-bottom:50px;
+    background-color: var(--SColor);
+    text-align: center;
+    color: var(--WColor);
+}
+.CHColor div{
+    background-color:var(--MColor);
+    border-color: var(--MColor);
+}
+
+.SBox div i{
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+.SBox div h2{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.BItems{
+   min-height: 200px;
+}
+.BIMGS{
+    width:90%;
+    margin:10px auto;
+    height: 120px;
+    overflow: hidden;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid var(--SColor);
+    border-radius: 5px;
+}
+.BIMGS img{
+    height: 100%;
+    object-fit: cover;
+}
+.BestSeller{
+    background-color: var(--HScolor);
+    padding: 50px 0px;
+}
+.sumury{
+    padding: 10px;
+}
+.sumury h1{
+    color: var(--SColor);
+    font-size: 40px;
+    font-weight: 800;
+}
+.sumury p{
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.MainContact{
+    background-color: var(--HScolor);
+}
+
+.ContactBox{
+    padding:50px 20px;
+    
+}
+.ContactBox h1{
+    color: var(--SColor);
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom:20px;
+}
+.ContactBox p{
+    color:var(--SColor);
+    margin-bottom: 20px;
+}
+.ContactBox p i{
+    font-size: 25px;
+    padding-right: 1rem;
+
+}
+.contMap{
+    padding: 50px 20px; 
+}
+.contMap iframe{
+    width: 100%;
+    height: 300px;
+}
+
+
+.MainFooter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+    background-color: var(--MColor);
+}
+.FootLogo{
+    width: 70%;
+}
+.FootLogo img{
+    width: 100%;
+}
+.FootMenu ul {
+    margin: 0;
+    padding: 0;
+}
+.FootMenu ul li{
+    list-style: none;
+    color: var(--WColor);
+    margin-bottom: 10px;
+}
+.FootMenu ul li i{
+    margin-right: 10px;
+}
+.COpyRights{
+    text-align: center;
+    background-color: var(--SColor);
+    color: var(--WColor);
+    padding: 10px 0px;
+    font-size: 14px;
+    margin: 0px;
+}   
