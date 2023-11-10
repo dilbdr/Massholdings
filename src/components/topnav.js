@@ -16,7 +16,6 @@ const TopNav = () => {
     try {
       const response = await axios.get(API_URI);
       setData(response.data);
-      console.log("Head-------------------", response);
     } catch (error) {
       setError(error);
     }
