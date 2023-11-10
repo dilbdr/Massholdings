@@ -15,7 +15,10 @@ const TopNav = () => {
     try {
       const response = await axios.get(API_URI);
       setData(response.data);
+<<<<<<< HEAD
       // console.log("Head-------------------", response);
+=======
+>>>>>>> bikash
     } catch (error) {
       setError(error);
     }
