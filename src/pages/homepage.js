@@ -69,15 +69,15 @@ const HomePage = () => {
             <Slider {...Tsettings}>
               {Data.items
                 ? Data.items.map((item) => (
-                    <div>
-                      <div className="TItemsBox">
-                        <div className="CIMG">
-                          <img src={item.DocPath} alt={item.item_name} />
-                        </div>
-                        <div className="CTitle">{item.item_name}</div>
+                  <div>
+                    <div className="TItemsBox">
+                      <div className="CIMG">
+                        <img src={item.DocPath} alt={item.item_name} />
                       </div>
+                      <div className="CTitle">{item.item_name}</div>
                     </div>
-                  ))
+                  </div>
+                ))
                 : "No Data"}
             </Slider>
           </div>
@@ -117,42 +117,24 @@ const HomePage = () => {
             </p>
           </div>
           <div className="row">
-            <div className="col-sm-12 col-md-4 col-lg-4">
-              <div className="SBox">
-                <div>
-                  <i className="fa-solid fa-chart-column"></i>
-                  <h2>Equipment Procurement and Sales</h2>
-                  <p>
-                    Sourcing and supplying a comprehensive range of restaurant
-                    and kitchen equipment.
-                  </p>
+            {Data.services
+              ? Data.services.map((service) => (
+                <div className="col-sm-12 col-md-4 col-lg-4">
+                  <div className="SBox">
+                    <div>
+                      <img src={service.DocPath} alt={service.title} height="100"></img>
+                      <h2>{service.title}</h2>
+
+                      <p dangerouslySetInnerHTML={{ __html: service.description }}>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="col-sm-12 col-md-4 col-lg-4">
-              <div className="SBox CHColor">
-                <div>
-                  <i className="fa-solid fa-chart-column"></i>
-                  <h2>Equipment Procurement and Sales</h2>
-                  <p>
-                    Sourcing and supplying a comprehensive range of restaurant
-                    and kitchen equipment.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-12 col-md-4 col-lg-4">
-              <div className="SBox">
-                <div>
-                  <i className="fa-solid fa-chart-column"></i>
-                  <h2>Equipment Procurement and Sales</h2>
-                  <p>
-                    Sourcing and supplying a comprehensive range of restaurant
-                    and kitchen equipment.
-                  </p>
-                </div>
-              </div>
-            </div>
+              ))
+              : "No Data"
+            }
+
+
           </div>
         </div>
       </div>
@@ -166,12 +148,12 @@ const HomePage = () => {
             <Slider {...Bsettings}>
               {Data.brand
                 ? Data.brand.map((brand) => (
-                    <div>
-                      <div className="BIMGS">
-                        <img src={brand.DocPath} alt={brand.name} />
-                      </div>
+                  <div>
+                    <div className="BIMGS">
+                      <img src={brand.DocPath} alt={brand.name} />
                     </div>
-                  ))
+                  </div>
+                ))
                 : ""}
             </Slider>
           </div>
@@ -195,18 +177,18 @@ const HomePage = () => {
                 <Slider {...BSsettings}>
                   {Data.best_selller
                     ? Data.best_selller.map((seller) => (
-                        <div>
-                          <div className="TItemsBox">
-                            <div className="CIMG">
-                              <img
-                                src={seller.DocPath}
-                                alt={seller.item_name}
-                              />
-                            </div>
-                            <div className="CTitle">{seller.item_name}</div>
+                      <div>
+                        <div className="TItemsBox">
+                          <div className="CIMG">
+                            <img
+                              src={seller.DocPath}
+                              alt={seller.item_name}
+                            />
                           </div>
+                          <div className="CTitle">{seller.item_name}</div>
                         </div>
-                      ))
+                      </div>
+                    ))
                     : ""}
                 </Slider>
               </div>
@@ -223,12 +205,12 @@ const HomePage = () => {
             <Slider {...Bsettings}>
               {Data.clients
                 ? Data.clients.map((client) => (
-                    <div>
-                      <div className="BIMGS">
-                        <img src={client.DocPath} alt={client.name} />
-                      </div>
+                  <div>
+                    <div className="BIMGS">
+                      <img src={client.DocPath} alt={client.name} />
                     </div>
-                  ))
+                  </div>
+                ))
                 : ""}
             </Slider>
           </div>
