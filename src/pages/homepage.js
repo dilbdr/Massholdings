@@ -17,21 +17,21 @@ const HomePage = () => {
 
   var Tsettings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
   };
   var Bsettings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 1,
   };
   var BSsettings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -52,7 +52,12 @@ const HomePage = () => {
   }
   if (loading) return "...";
   if (error) return "error";
-
+  let $description = false;
+  if (Data.about) {
+    if (Data.about.Description.replace(/(<([^>]+)>)/gi, "").length > 750) {
+      $description = true;
+    }
+  }
   console.log("Body-------------------", Data);
   return (
     <>
@@ -93,21 +98,13 @@ const HomePage = () => {
             <div className="col-sm-12 col-md-6 col-lg-6">
               <div className="CContent">
                 <h1>{Data.about.PageTitle}</h1>
-                {Data.about !== null
-                  ? Data.about.Description.replace(/(<([^>]+)>)/gi, "").length >
-                    650
-                    ? `${Data.about.Description.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    ).substring(0, 650)}...`
-                    : Data.about.Description.replace(/(<([^>]+)>)/gi, "")
-                  : ""}
-                <button className="BTNSSS">LEARN MORE</button>
+                <div className="post__content" dangerouslySetInnerHTML={{ __html: Data.about.Description }}></div>
+                <Link to={`/${Data.about.slug}`} className="BTNSSS">LEARN MORE</Link>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div >
       <div className="MainServices">
         <div className="container">
           <div className="STitle">
@@ -118,6 +115,7 @@ const HomePage = () => {
             </p>
           </div>
           <div className="row">
+
             <div className="col-sm-12 col-md-4 col-lg-4">
               <div className="SBox">
                 <div>
@@ -164,36 +162,16 @@ const HomePage = () => {
           </div>
           <div className="BItems">
             <Slider {...Bsettings}>
-              <div>
-                <div className="BIMGS">
-                  <img src={Blogo} alt="Image" />
-                </div>
-              </div>
-              <div>
-                <div className="BIMGS">
-                  <img src={Blogo} alt="Image" />
-                </div>
-              </div>
-              <div>
-                <div className="BIMGS">
-                  <img src={Blogo} alt="Image" />
-                </div>
-              </div>
-              <div>
-                <div className="BIMGS">
-                  <img src={Blogo} alt="Image" />
-                </div>
-              </div>
-              <div>
-                <div className="BIMGS">
-                  <img src={Blogo} alt="Image" />
-                </div>
-              </div>
-              <div>
-                <div className="BIMGS">
-                  <img src={Blogo} alt="Image" />
-                </div>
-              </div>
+              {
+                Data.brand ? Data.brand.map((brand) =>
+                  <div>
+                    <div className="BIMGS">
+                      <img src={brand.DocPath} alt={brand.name} />
+                    </div>
+                  </div>
+                ) : ''
+              }
+
             </Slider>
           </div>
         </div>
@@ -214,68 +192,28 @@ const HomePage = () => {
             <div className="col-sm-12 col-md-8 col-lg-9">
               <div className="BestBox">
                 <Slider {...BSsettings}>
-                  <div>
-                    <div className="TItemsBox">
-                      <div className="CIMG">
-                        <img src={TImage1} alt="Image" />
+                  {
+
+                    Data.best_selller ? Data.best_selller.map((seller) =>
+                      <div>
+                        <div className="TItemsBox">
+                          <div className="CIMG">
+                            <img src={seller.DocPath} alt={seller.item_name} />
+                          </div>
+                          <div className="CTitle">{seller.item_name}</div>
+                        </div>
                       </div>
-                      <div className="CTitle">Combi Oven</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="TItemsBox">
-                      <div className="CIMG">
-                        <img src={TImage1} alt="Image" />
-                      </div>
-                      <div className="CTitle">Combi Oven</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="TItemsBox">
-                      <div className="CIMG">
-                        <img src={TImage1} alt="Image" />
-                      </div>
-                      <div className="CTitle">Combi Oven</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="TItemsBox">
-                      <div className="CIMG">
-                        <img src={TImage1} alt="Image" />
-                      </div>
-                      <div className="CTitle">Combi Oven</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="TItemsBox">
-                      <div className="CIMG">
-                        <img src={TImage1} alt="Image" />
-                      </div>
-                      <div className="CTitle">Combi Oven</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="TItemsBox">
-                      <div className="CIMG">
-                        <img src={TImage1} alt="Image" />
-                      </div>
-                      <div className="CTitle">Combi Oven</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="TItemsBox">
-                      <div className="CIMG">
-                        <img src={TImage1} alt="Image" />
-                      </div>
-                      <div className="CTitle">Combi Oven</div>
-                    </div>
-                  </div>
+                    ) : ''
+
+                  }
+
+
                 </Slider>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
       <div className="MainBrand">
         <div className="container">
           <div className="STitle">
@@ -283,36 +221,18 @@ const HomePage = () => {
           </div>
           <div className="BItems">
             <Slider {...Bsettings}>
-              <div>
-                <div className="BIMGS">
-                  <img src={Blogo} alt="Image" />
-                </div>
-              </div>
-              <div>
-                <div className="BIMGS">
-                  <img src={Blogo} alt="Image" />
-                </div>
-              </div>
-              <div>
-                <div className="BIMGS">
-                  <img src={Blogo} alt="Image" />
-                </div>
-              </div>
-              <div>
-                <div className="BIMGS">
-                  <img src={Blogo} alt="Image" />
-                </div>
-              </div>
-              <div>
-                <div className="BIMGS">
-                  <img src={Blogo} alt="Image" />
-                </div>
-              </div>
-              <div>
-                <div className="BIMGS">
-                  <img src={Blogo} alt="Image" />
-                </div>
-              </div>
+              {
+
+                Data.clients ? Data.clients.map((client) =>
+                  <div>
+                    <div className="BIMGS">
+                      <img src={client.DocPath} alt={client.name} />
+                    </div>
+                  </div>
+                ) : ''
+
+              }
+
             </Slider>
           </div>
         </div>
