@@ -5,10 +5,9 @@ import { Link, useParams } from "react-router-dom";
 const API_URI = "https://admin.massholdings.com.np/api/head";
 const TopNav = () => {
   const { slug } = useParams();
-  const [Data, setData] = useState(null);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     getApiData();
   }, [slug]);
@@ -16,7 +15,7 @@ const TopNav = () => {
     try {
       const response = await axios.get(API_URI);
       setData(response.data);
-      console.log("Head-------------------", response);
+      // console.log("Head-------------------", response);
     } catch (error) {
       setError(error);
     }
@@ -34,47 +33,28 @@ const TopNav = () => {
                 <ul className="TopItems">
                   <li>
                     <a href="#">
-                      <i class="fa-solid fa-phone"></i> 01-4376876 , 01-4379535
+                      <i className="fa-solid fa-phone"></i> 01-4376876 ,
+                      01-4379535
                     </a>
                   </li>
                   <li className="email">
                     <a href="#">
-                      <i class="fa-solid fa-envelope"></i>
+                      <i className="fa-solid fa-envelope"></i>
                       contact@massgroup.com.np
                     </a>
                   </li>
                 </ul>
               </div>
-              <div className="col-sm-12 col-md-2 col-lg-2 DN">
-                <ul className="TopItems">
-                  <li>
-                    <a href="#">
-                      <i class="fa-brands fa-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa-brands fa-instagram"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa-brands fa-youtube"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="col-sm-12 col-md-6 col-lg-4">
+
+              <div className="col-sm-12 col-md-6 col-lg-6">
                 <ul className="TopItems AR">
-                  <li>
-                    <a href="#">Home</a>
-                  </li>
-                  <li>
-                    <a href="#">About Us</a>
-                  </li>
-                  <li>
-                    <a href="#">Services</a>
-                  </li>
+                  {data.content.map((i, value) => {
+                    return (
+                      <li key={value}>
+                        <Link to={i.slug}>{i.title}</Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>
@@ -85,7 +65,7 @@ const TopNav = () => {
             <div className="row">
               <div className="col-sm-12 col-md-6 col-lg-6 ">
                 <div className="MainLogo AL">
-                  <Link to="#">
+                  <Link to="/">
                     <img src={logo} alt="Logo" />
                     <span>Mass Holdings</span>
                   </Link>
@@ -96,7 +76,7 @@ const TopNav = () => {
                   <form action="#">
                     <input type="search" placeholder="Search" />
                     <button>
-                      <i class="fa-solid fa-magnifying-glass"></i>
+                      <i className="fa-solid fa-magnifying-glass"></i>
                     </button>
                   </form>
                 </div>

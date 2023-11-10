@@ -116,6 +116,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
       <div className="CompanyIntro">
         <div className="container">
           <div className="row">
@@ -147,6 +148,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
       <div className="MainServices">
         <div className="container">
           <div className="STitle">
@@ -160,7 +162,7 @@ const HomePage = () => {
             <div className="col-sm-12 col-md-4 col-lg-4">
               <div className="SBox">
                 <div>
-                  <i class="fa-solid fa-chart-column"></i>
+                  <i className="fa-solid fa-chart-column"></i>
                   <h2>Equipment Procurement and Sales</h2>
                   <p>
                     Sourcing and supplying a comprehensive range of restaurant
@@ -172,7 +174,7 @@ const HomePage = () => {
             <div className="col-sm-12 col-md-4 col-lg-4">
               <div className="SBox CHColor">
                 <div>
-                  <i class="fa-solid fa-chart-column"></i>
+                  <i className="fa-solid fa-chart-column"></i>
                   <h2>Equipment Procurement and Sales</h2>
                   <p>
                     Sourcing and supplying a comprehensive range of restaurant
@@ -184,7 +186,7 @@ const HomePage = () => {
             <div className="col-sm-12 col-md-4 col-lg-4">
               <div className="SBox">
                 <div>
-                  <i class="fa-solid fa-chart-column"></i>
+                  <i className="fa-solid fa-chart-column"></i>
                   <h2>Equipment Procurement and Sales</h2>
                   <p>
                     Sourcing and supplying a comprehensive range of restaurant
@@ -196,6 +198,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
       <div className="MainBrand">
         <div className="container">
           <div className="STitle">
@@ -364,14 +367,15 @@ const HomePage = () => {
               <div className="ContactBox">
                 <h1>Contact Us</h1>
                 <p>
-                  <i class="fa-solid fa-phone"></i> 01-4376876 , 01-4379535
+                  <i className="fa-solid fa-phone"></i> 01-4376876 , 01-4379535
                   +977- 9841885368
                 </p>
                 <p>
-                  <i class="fa-solid fa-envelope"></i> contact@massgroup.com.np
+                  <i className="fa-solid fa-envelope"></i>{" "}
+                  contact@massgroup.com.np
                 </p>
                 <p>
-                  <i class="fa-solid fa-location-dot"></i> Mass Complex,
+                  <i className="fa-solid fa-location-dot"></i> Mass Complex,
                   Dhumbarahi-04, Kathmandu, Nepal
                 </p>
               </div>

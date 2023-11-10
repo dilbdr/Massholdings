@@ -114,6 +114,7 @@ a{
 }
 .navbar-nav .nav-item .nav-link{
     color: var(--WColor);
+    padding: 8px 20px!important;
 }
 
 @media (max-width: 768px){

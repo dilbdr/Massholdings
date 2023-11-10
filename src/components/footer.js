@@ -1,6 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link, useParams } from "react-router-dom";
 import WLOgo from "../assets/img/mh-logo-white.png";
+const API_URI = "https://admin.massholdings.com.np/api/footer";
 const Footer = () => {
+  const { slug } = useParams();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    getApiData();
+  }, [slug]);
+  async function getApiData() {
+    try {
+      const response = await axios.get(API_URI);
+      setData(response.data);
+      console.log("Foot-------------------", response);
+    } catch (error) {
+      setError(error);
+    }
+    setLoading(false);
+  }
+  if (loading) return "...";
+  if (error) return "error";
   return (
     <>
       <div className="MainFooter">
@@ -34,15 +56,15 @@ const Footer = () => {
               <div className="FootMenu">
                 <ul>
                   <li>
-                    <i class="fa-brands fa-facebook"></i>
+                    <i className="fa-brands fa-facebook"></i>
                     facebook
                   </li>
                   <li>
-                    <i class="fa-brands fa-instagram"></i>
+                    <i className="fa-brands fa-instagram"></i>
                     instagram
                   </li>
                   <li>
-                    <i class="fa-brands fa-youtube"></i>
+                    <i className="fa-brands fa-youtube"></i>
                     youtube
                   </li>
                 </ul>
