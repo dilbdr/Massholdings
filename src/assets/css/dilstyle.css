@@ -18,6 +18,8 @@ a{
 :root{
     --MColor: #1a9acf;
     --SColor: #9d2430;
+ 
+    --red: #9d2430;
     --WColor: #fff;
     --Hcolor:#ddd;
     --HScolor:#ebebeb;
@@ -114,7 +116,7 @@ a{
 }
 .navbar-nav .nav-item .nav-link{
     color: var(--WColor);
-    padding: 8px 20px!important;
+    padding: 8px 35px 8px 0px!important;
 }
 
 @media (max-width: 768px){
@@ -147,7 +149,33 @@ a{
         width: 90%;
     }
 }
+.MainBanner{
+    height:450px;
+    overflow: hidden;
+}
+.carousel-root{
+    height: 100%;
+}
+.slider-wrapper{
+    height: 100%;
+}
+.slide{
+    height: 100%;
+}
 
+.slider{
+    height: 100%;
+}
+.carousel{
+    height: 100%;
+}
+.slide div{
+    height: 100%;
+}
+.slide div img{
+    height: 100%;
+    object-fit: cover;
+}
 .MainTrending{
     background: var(--blue-linear);
     min-height:65vh;
@@ -185,6 +213,8 @@ a{
     text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;
+    min-height: 70px;
+    overflow: hidden;
 }
 
 .CompanyIntro{
@@ -217,12 +247,18 @@ a{
 .CContent p span{
     color: var(--SColor);
 }
+.post__content{
+    margin-bottom: 20px;
+}
 .BTNSSS{
     border:1px solid var(--SColor);
     background-color:var(--SColor);
     color: var(--WColor);
     padding: 10px 20px;
     border-radius:20px;
+}
+.BTNSSS:hover{
+    background-color:#c83d4b;
 }
 .slick-slider{
     position: relative;
@@ -377,3 +413,60 @@ a{
     font-size: 14px;
     margin: 0px;
 }   
+.Breadcom{
+    padding: 10px;
+   /* background-color: var(--HScolor); */
+}
+.Breadcom ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+.Breadcom ul li{
+    list-style: none; 
+    position: relative;
+    margin-right: 5px;
+    padding-right: 5px;
+}
+.Breadcom ul li:first-child::after{
+    content: ">";
+    position: absolute;
+    top:0;
+    right: -10px;
+}
+.Breadcom ul li:nth-child(2)::after{
+    content: ">";
+    position: absolute;
+    top:0;
+    right: -10px;
+}
+.Breadcom ul li:nth-child(3){
+    color:var(--SColor);
+}
+.Breadcom h1{
+    font-size: 25px;
+    color: var(--SColor);
+    text-transform: capitalize;
+   
+}
+
+.ProductsDetails{
+    padding: 20px;
+}
+.FilterNav{
+    border:1px solid var(--red);
+    height: 500px;
+}
+.FilterNav h3{
+    background-color: var(--SColor);
+    color: var(--WColor);
+    padding: 10px;
+    margin: 0px;
+    font-size:20px;
+    
+}
+.ProductsItems{
+    border:1px solid var(--SColor);
+    height: 500px;
+}
