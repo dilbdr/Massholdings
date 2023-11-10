@@ -44,7 +44,6 @@ const HomePage = () => {
     try {
       const response = await axios.get(API_URI);
       setData(response.data);
-
     } catch (error) {
       setError(error);
     }
@@ -68,20 +67,18 @@ const HomePage = () => {
           <div className="TTitle">Featured Products</div>
           <div className="TItems">
             <Slider {...Tsettings}>
-              {
-
-                Data.items ? Data.items.map((item) =>
-                  <div>
-                    <div className="TItemsBox">
-                      <div className="CIMG">
-                        <img src={item.DocPath} alt={item.item_name} />
+              {Data.items
+                ? Data.items.map((item) => (
+                    <div>
+                      <div className="TItemsBox">
+                        <div className="CIMG">
+                          <img src={item.DocPath} alt={item.item_name} />
+                        </div>
+                        <div className="CTitle">{item.item_name}</div>
                       </div>
-                      <div className="CTitle">{item.item_name}</div>
                     </div>
-                  </div>
-                ) : "No Data"
-              }
-
+                  ))
+                : "No Data"}
             </Slider>
           </div>
         </div>
@@ -98,18 +95,18 @@ const HomePage = () => {
             <div className="col-sm-12 col-md-6 col-lg-6">
               <div className="CContent">
                 <h1>{Data.about.PageTitle}</h1>
-                <div className="post__content" dangerouslySetInnerHTML={{ __html: Data.about.Description }}></div>
-                <Link to={`/${Data.about.slug}`} className="BTNSSS">LEARN MORE</Link>
+                <div
+                  className="post__content"
+                  dangerouslySetInnerHTML={{ __html: Data.about.Description }}
+                ></div>
+                <Link to={`/${Data.about.slug}`} className="BTNSSS">
+                  LEARN MORE
+                </Link>
               </div>
             </div>
           </div>
         </div>
-<<<<<<< HEAD
       </div>
-
-=======
-      </div >
->>>>>>> bikash
       <div className="MainServices">
         <div className="container">
           <div className="STitle">
@@ -120,7 +117,6 @@ const HomePage = () => {
             </p>
           </div>
           <div className="row">
-
             <div className="col-sm-12 col-md-4 col-lg-4">
               <div className="SBox">
                 <div>
@@ -168,16 +164,15 @@ const HomePage = () => {
           </div>
           <div className="BItems">
             <Slider {...Bsettings}>
-              {
-                Data.brand ? Data.brand.map((brand) =>
-                  <div>
-                    <div className="BIMGS">
-                      <img src={brand.DocPath} alt={brand.name} />
+              {Data.brand
+                ? Data.brand.map((brand) => (
+                    <div>
+                      <div className="BIMGS">
+                        <img src={brand.DocPath} alt={brand.name} />
+                      </div>
                     </div>
-                  </div>
-                ) : ''
-              }
-
+                  ))
+                : ""}
             </Slider>
           </div>
         </div>
@@ -198,28 +193,27 @@ const HomePage = () => {
             <div className="col-sm-12 col-md-8 col-lg-9">
               <div className="BestBox">
                 <Slider {...BSsettings}>
-                  {
-
-                    Data.best_selller ? Data.best_selller.map((seller) =>
-                      <div>
-                        <div className="TItemsBox">
-                          <div className="CIMG">
-                            <img src={seller.DocPath} alt={seller.item_name} />
+                  {Data.best_selller
+                    ? Data.best_selller.map((seller) => (
+                        <div>
+                          <div className="TItemsBox">
+                            <div className="CIMG">
+                              <img
+                                src={seller.DocPath}
+                                alt={seller.item_name}
+                              />
+                            </div>
+                            <div className="CTitle">{seller.item_name}</div>
                           </div>
-                          <div className="CTitle">{seller.item_name}</div>
                         </div>
-                      </div>
-                    ) : ''
-
-                  }
-
-
+                      ))
+                    : ""}
                 </Slider>
               </div>
             </div>
           </div>
-        </div >
-      </div >
+        </div>
+      </div>
       <div className="MainBrand">
         <div className="container">
           <div className="STitle">
@@ -227,18 +221,15 @@ const HomePage = () => {
           </div>
           <div className="BItems">
             <Slider {...Bsettings}>
-              {
-
-                Data.clients ? Data.clients.map((client) =>
-                  <div>
-                    <div className="BIMGS">
-                      <img src={client.DocPath} alt={client.name} />
+              {Data.clients
+                ? Data.clients.map((client) => (
+                    <div>
+                      <div className="BIMGS">
+                        <img src={client.DocPath} alt={client.name} />
+                      </div>
                     </div>
-                  </div>
-                ) : ''
-
-              }
-
+                  ))
+                : ""}
             </Slider>
           </div>
         </div>
