@@ -39,11 +39,6 @@ const Products = () => {
       <div className="ProductsDetails">
         <div className="container">
           <div className="row">
-            {/* <div className="col-sm-5 col-md-4 col-lg-3">
-              <div className="FilterNav">
-                <h3>Filter</h3>
-              </div>
-            </div> */}
             <div className="col-sm-12 col-md-12 col-lg-12">
               {data.items.map((i) => {
                 console.log("it", i.slug);
