@@ -51,7 +51,7 @@ const TopNav = () => {
                   {data.content.map((i, value) => {
                     return (
                       <li key={value}>
-                        <Link to={i.slug}>{i.title}</Link>
+                        <Link to={i.slug !== 'home' ? i.slug : ''}>{i.title}</Link>
                       </li>
                     );
                   })}

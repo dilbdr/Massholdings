@@ -12,7 +12,7 @@ const MyRoutes = () => {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/:slug" element={<Pages />} />
+        <Route path=":slug" element={<Pages />} />
         <Route path="products/:slug" element={<Products />} />
         <Route path="products/details/:slug" element={<ProductsDetails />} />
       </Routes>
