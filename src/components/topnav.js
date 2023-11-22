@@ -2,27 +2,31 @@ import React, { useState, useEffect } from "react";
 import logo from "../assets/img/logo.png";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import Loading from "../comon/loading";
+import Errors from "../comon/error";
 const API_URI = "https://admin.massholdings.com.np/api/head";
 const TopNav = () => {
   const { slug } = useParams();
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   useEffect(() => {
-    getApiData();
-  }, [slug]);
-  async function getApiData() {
-    try {
-      const response = await axios.get(API_URI);
-      setData(response.data);
-      // console.log("Head-------------------", response);
-    } catch (error) {
-      setError(error);
-    }
-    setLoading(false);
-  }
-  if (loading) return "...";
-  if (error) return "error";
+    (async () => {
+      try {
+        setLoading(true);
+        setError(false);
+        const response = await axios.get(API_URI);
+        setData(response.data);
+        console.log("head", response.data);
+        setLoading(false);
+      } catch (error) {
+        setError(true);
+        setLoading(false);
+      }
+    })();
+  }, []);
+  if (loading) return "";
+  if (error) return <Errors />;
   return (
     <>
       <div className="MainContainer">
@@ -33,14 +37,14 @@ const TopNav = () => {
                 <ul className="TopItems">
                   <li>
                     <a href="#">
-                      <i className="fa-solid fa-phone"></i> 01-4376876 ,
-                      01-4379535
+                      <i className="fa-solid fa-phone"></i>{" "}
+                      {data.site_settings.telephone}
                     </a>
                   </li>
                   <li className="email">
                     <a href="#">
-                      <i className="fa-solid fa-envelope"></i>
-                      contact@massgroup.com.np
+                      <i className="fa-solid fa-envelope"></i>{" "}
+                      {data.site_settings.email}
                     </a>
                   </li>
                 </ul>
@@ -51,7 +55,9 @@ const TopNav = () => {
                   {data.content.map((i, value) => {
                     return (
                       <li key={value}>
-                        <Link to={i.slug !== 'home' ? i.slug : ''}>{i.title}</Link>
+                        <Link to={i.slug !== "home" ? i.slug : ""}>
+                          {i.title}
+                        </Link>
                       </li>
                     );
                   })}

@@ -4,39 +4,44 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useParams } from "react-router-dom";
 import About from "../pages/about";
 import Contact from "../pages/contact";
-import '../assets/css/contact.css';
-
+import "../assets/css/contact.css";
+import Loading from "../comon/loading";
+import Errors from "../comon/error";
+import { TabTitle } from "../comon/dynamicTitle";
 const Pages = () => {
   const limit = 4;
   const { slug } = useParams();
-  const [content, setContent] = useState();
+  TabTitle(`Mass Holdings | ${slug}`);
+  const [content, setContent] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    getApiData();
-  })
+    (async () => {
+      try {
+        setLoading(true);
+        setError(false);
+        const response = await axios.get(
+          `https://admin.massholdings.com.np/api/content/${limit}/1/${slug}`
+        );
+        if (response.data.status_code !== 200)
+          setError(response.data.statusText);
+        setContent(response.data.items);
+        setLoading(false);
+      } catch (error) {
+        setError(true);
+        setLoading(false);
+      }
+    })();
+  }, []);
 
-  async function getApiData() {
-    try {
-      const response = await axios.get(`https://admin.massholdings.com.np/api/content/${limit}/1/${slug}`);
-      if (response.data.status_code !== 200)
-        setError(response.data.statusText);
-      setContent(response.data.items);
-
-    } catch (error) {
-      setError(error.message);
-    }
-    setLoading(false);
-  }
-  if (loading) return "...";
-  if (error) return error;
-
+  if (loading) return <Loading />;
+  if (error) return <Errors />;
 
   return (
     <>
-      {slug == 'about-us' ? <About content={content} breadcrum={slug} /> : ''}
-      {slug == 'contact-us' ? <Contact /> : ''}
+      {slug == "about-us" ? <About content={content} breadcrum={slug} /> : ""}
+      {slug == "contact-us" ? <Contact /> : ""}
     </>
   );
 };

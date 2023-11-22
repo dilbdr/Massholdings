@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
 import Slider from "react-slick";
-import TImage1 from "../assets/img/trending/combi-oven.png";
-import AboutImage from "../assets/img/about-us-img.png";
-import Blogo from "../assets/img/brands/companies-logo-1.png";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Banner from "./banner";
+import Loading from "../comon/loading";
+import Errors from "../comon/error";
+import { TabTitle } from "../comon/dynamicTitle";
 const API_URI = "https://admin.massholdings.com.np/api/home";
 const HomePage = () => {
   const { slug } = useParams();
-  const [Data, setData] = useState(null);
+  TabTitle(`Mass Holdings | Home`);
+  const [Data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
+  const [error, setError] = useState(false);
   var Tsettings = {
-    dots: true,
-    infinite: false,
+    dots: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -36,28 +35,29 @@ const HomePage = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
   };
-
   useEffect(() => {
-    getApiData();
-  }, [slug]);
-  async function getApiData() {
-    try {
-      const response = await axios.get(API_URI);
-      setData(response.data);
-    } catch (error) {
-      setError(error);
-    }
-    setLoading(false);
-  }
-  if (loading) return "...";
-  if (error) return "error";
+    (async () => {
+      try {
+        setLoading(true);
+        setError(false);
+        const response = await axios.get(API_URI);
+        setData(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError(true);
+        setLoading(false);
+      }
+    })();
+  }, []);
+
+  if (loading) return <Loading />;
+  if (error) return <Errors />;
   let $description = false;
   if (Data.about) {
     if (Data.about.Description.replace(/(<([^>]+)>)/gi, "").length > 750) {
       $description = true;
     }
   }
-  console.log("Body-------------------", Data);
   return (
     <>
       <Banner banner={Data.banner ? Data.banner : []} />
@@ -69,15 +69,15 @@ const HomePage = () => {
             <Slider {...Tsettings}>
               {Data.items
                 ? Data.items.map((item) => (
-                  <div>
-                    <div className="TItemsBox">
-                      <div className="CIMG">
-                        <img src={item.DocPath} alt={item.item_name} />
+                    <div>
+                      <div className="TItemsBox">
+                        <div className="CIMG">
+                          <img src={item.DocPath} alt={item.item_name} />
+                        </div>
+                        <div className="CTitle">{item.item_name}</div>
                       </div>
-                      <div className="CTitle">{item.item_name}</div>
                     </div>
-                  </div>
-                ))
+                  ))
                 : "No Data"}
             </Slider>
           </div>
@@ -119,22 +119,26 @@ const HomePage = () => {
           <div className="row">
             {Data.services
               ? Data.services.map((service) => (
-                <div className="col-sm-12 col-md-4 col-lg-4">
-                  <div className="SBox">
-                    <div>
-                      <img src={service.DocPath} alt={service.title} height="100"></img>
-                      <h2>{service.title}</h2>
+                  <div className="col-sm-12 col-md-4 col-lg-4">
+                    <div className="SBox">
+                      <div>
+                        <img
+                          src={service.DocPath}
+                          alt={service.title}
+                          height="100"
+                        ></img>
+                        <h2>{service.title}</h2>
 
-                      <p dangerouslySetInnerHTML={{ __html: service.description }}>
-                      </p>
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: service.description,
+                          }}
+                        ></p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
-              : "No Data"
-            }
-
-
+                ))
+              : "No Data"}
           </div>
         </div>
       </div>
@@ -148,12 +152,12 @@ const HomePage = () => {
             <Slider {...Bsettings}>
               {Data.brand
                 ? Data.brand.map((brand) => (
-                  <div>
-                    <div className="BIMGS">
-                      <img src={brand.DocPath} alt={brand.name} />
+                    <div>
+                      <div className="BIMGS">
+                        <img src={brand.DocPath} alt={brand.name} />
+                      </div>
                     </div>
-                  </div>
-                ))
+                  ))
                 : ""}
             </Slider>
           </div>
@@ -177,18 +181,18 @@ const HomePage = () => {
                 <Slider {...BSsettings}>
                   {Data.best_selller
                     ? Data.best_selller.map((seller) => (
-                      <div>
-                        <div className="TItemsBox">
-                          <div className="CIMG">
-                            <img
-                              src={seller.DocPath}
-                              alt={seller.item_name}
-                            />
+                        <div>
+                          <div className="TItemsBox">
+                            <div className="CIMG">
+                              <img
+                                src={seller.DocPath}
+                                alt={seller.item_name}
+                              />
+                            </div>
+                            <div className="CTitle">{seller.item_name}</div>
                           </div>
-                          <div className="CTitle">{seller.item_name}</div>
                         </div>
-                      </div>
-                    ))
+                      ))
                     : ""}
                 </Slider>
               </div>
@@ -205,12 +209,12 @@ const HomePage = () => {
             <Slider {...Bsettings}>
               {Data.clients
                 ? Data.clients.map((client) => (
-                  <div>
-                    <div className="BIMGS">
-                      <img src={client.DocPath} alt={client.name} />
+                    <div>
+                      <div className="BIMGS">
+                        <img src={client.DocPath} alt={client.name} />
+                      </div>
                     </div>
-                  </div>
-                ))
+                  ))
                 : ""}
             </Slider>
           </div>

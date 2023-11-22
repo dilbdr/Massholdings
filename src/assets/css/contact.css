@@ -487,9 +487,7 @@ header .header-menu ul li a {
 }
 
 /* CONTACT SECTION */
-.contact-section {
-    padding: 40px 0;
-}
+
 
 .contact-section i {
     font-size: 25px;
@@ -662,7 +660,7 @@ footer .social-logo i:hover {
 
 /* CONTACT PAGE */
 .contact-section {
-    padding: 64px 0;
+   margin-bottom: 50px;
 }
 
 .contact-section .title .big-text {
@@ -749,7 +747,7 @@ footer .social-logo i:hover {
     z-index: 99;
 }
 
-.about-section .sample-img::after {
+/* .about-section .sample-img::after {
     position: absolute;
     content: "";
     top: 50%;
@@ -759,7 +757,7 @@ footer .social-logo i:hover {
     width: 450px;
     height: 450px;
     z-index: -1;
-}
+} */
 
 .about-section .vision .sample-img::after {
     left: 26%;

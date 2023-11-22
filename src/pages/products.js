@@ -2,93 +2,178 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import logo from "../assets/img/logo.png";
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import Loading from "../comon/loading";
+import Errors from "../comon/error";
+import { TabTitle } from "../comon/dynamicTitle";
+import Breadcrumbs from "../comon/breadcrumbs";
+import LazyLoad from "react-lazy-load";
 const Products = () => {
   const { slug } = useParams();
-  const [data, setData] = useState(null);
+  TabTitle(`Mass Holdings | ${slug}`);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   useEffect(() => {
-    getApiData();
+    (async () => {
+      try {
+        setLoading(true);
+        setError(false);
+        const response = await axios.get(
+          `https://admin.massholdings.com.np/api/products/detail/${slug}`
+        );
+        setData(response.data.detail);
+        console.log("products", response.data.detail);
+        setLoading(false);
+      } catch (error) {
+        setError(true);
+        setLoading(false);
+      }
+    })();
   }, [slug]);
-  async function getApiData() {
-    try {
-      const response = await axios.get(`https://admin.massholdings.com.np/api/products/detail/${slug}`);
-      setData(response.data.detail);
 
-    } catch (error) {
-      setError(error.statusText);
-    }
-    setLoading(false);
-  }
-
-  if (loading) return "...";
-  if (error) return "error";
+  if (loading) return <Loading />;
+  if (error) return <Errors />;
   return (
     <>
-      <div className="Breadcom">
-        <div className="container">
-          <h1>{slug}</h1>
-          <ul>
-            <li>Home</li>
-            <li>Products</li>
-            <li>{slug}</li>
-          </ul>
-        </div>
-      </div>
-      <div className="container">
-        <div className="main-section row">
-          <div className="img-section col-6">
+      <Breadcrumbs />
+      <div className="productsDetails">
+        <LazyLoad>
+          <div className="container">
             <div className="row">
-              <div className="small-img-section col-2">
-                <div className="row row-cols-1 g-4">
-                  {
-                    data ? data.img.map((image) =>
-                      <div className="col">
-                        <div className="h-100">
+              <div className="col-sm-12 col-md-3 col-lg-2">
+                <div className="TabImagess">
+                  {data
+                    ? data.img.map((image, index) => (
+                        <div
+                          key={index}
+                          className="imgss"
+                          type="button"
+                          data-bs-toggle="modal"
+                          data-bs-target={`#imagemodel${image.id}`}
+                        >
                           <img
                             src={image.DocPath}
                             className="card-img-top active"
                             alt={data.item_name}
                           />
                         </div>
-                      </div>
-                    ) : error
-                  }
+                      ))
+                    : error}
+                  {data
+                    ? data.img.map((image, index) => (
+                        <div
+                          key={index}
+                          className="modal fade"
+                          id={`imagemodel${image.id}`}
+                          tabIndex={-1}
+                          aria-labelledby="exampleModalLabel"
+                          aria-hidden="true"
+                        >
+                          <div className="modal-dialog">
+                            <div className="modal-content">
+                              <div className="modal-body">
+                                <button
+                                  type="button"
+                                  className="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                />
 
-
-
+                                <img
+                                  src={image.DocPath}
+                                  className="card-img-top active"
+                                  alt={data.item_name}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))
+                    : error}
                 </div>
               </div>
-              <div className="full-img-section col-10">
-                <img
-                  src={data.img[0] ? data.img[0].DocPath : logo}
-                  className="card-img-top w-100"
-                  alt={data.item_name}
-                />
+              <div className="col-sm-12 col-md-9 col-lg-10">
+                <div className="row">
+                  <div className="col-sm-12 col-md-6 col-lg-4">
+                    <div className="ProductsImage">
+                      <img
+                        src={data.img[0] ? data.img[0].DocPath : logo}
+                        className="card-img-top w-100"
+                        alt={data.item_name}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-sm-12 col-md-6 col-lg-8">
+                    <div className="BrandImage">
+                      <h1>
+                        Brand : <span>{data?.brand_name}</span>
+                      </h1>
+                      <img
+                        src={data.brand_image ? data.brand_image : logo}
+                        className="card-img-top w-100"
+                        alt={data?.brand_name}
+                      />
+                    </div>
+                    <div className="Products_details">
+                      <h1>
+                        Product Name : <span>{data.item_name}</span>{" "}
+                      </h1>
+                      <h1>Description</h1>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: data.description
+                            ? data.description
+                            : "No Content",
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="specification">
+                  <h1>Specification</h1>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: data.specification
+                        ? data.specification
+                        : "No Content",
+                    }}
+                  ></div>
+                  {/* <h1>{data.item_name} </h1> */}
+                  {/* <Tabs>
+                  <TabList>
+                    <Tab>Description</Tab>
+                    <Tab>Specification</Tab>
+                    <Tab>Watch Video</Tab>
+                  </TabList>
+                  <TabPanel>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: data.description
+                          ? data.description
+                          : "No Content",
+                      }}
+                    ></div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: data.specification
+                          ? data.specification
+                          : "No Content",
+                      }}
+                    ></div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div>Video</div>
+                  </TabPanel>
+                </Tabs> */}
+                </div>
               </div>
             </div>
           </div>
-          <div className="details-section col-6">
-            <div className="title header-text mb-4">
-              <h1>{data.item_name} </h1>
-            </div>
-            <Tabs>
-              <TabList>
-                <Tab>Description</Tab>
-                <Tab>Specification</Tab>
-              </TabList>
-
-              <TabPanel>
-                <div dangerouslySetInnerHTML={{ __html: data.description ? data.description : 'No Content' }}></div>
-              </TabPanel>
-              <TabPanel>
-                <div dangerouslySetInnerHTML={{ __html: data.specification ? data.specification : 'No Content' }}></div>
-              </TabPanel>
-            </Tabs>
-          </div>
-        </div >
+        </LazyLoad>
       </div>
     </>
   );
