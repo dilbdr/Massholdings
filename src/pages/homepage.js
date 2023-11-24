@@ -2,21 +2,25 @@ import React, { useState, useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Slider from "react-slick";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import Banner from "./banner";
 import Loading from "../comon/loading";
 import Errors from "../comon/error";
 import { TabTitle } from "../comon/dynamicTitle";
+import logo from "../assets/img/logo.png";
 const API_URI = "https://admin.massholdings.com.np/api/home";
 const HomePage = () => {
   const { slug } = useParams();
+  const navigate = useNavigate();
   TabTitle(`Mass Holdings | Home`);
   const [Data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const [error, setError] = useState(false);
   var Tsettings = {
     dots: false,
     infinite: true,
+    autoplay: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -24,13 +28,15 @@ const HomePage = () => {
   var Bsettings = {
     dots: false,
     infinite: false,
+    autoplay: true,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 1,
   };
   var BSsettings = {
     dots: false,
-    infinite: false,
+    infinite: true,
+    autoplay: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -43,12 +49,13 @@ const HomePage = () => {
         const response = await axios.get(API_URI);
         setData(response.data);
         setLoading(false);
+        console.log("sssss______", response.data);
       } catch (error) {
         setError(true);
         setLoading(false);
       }
     })();
-  }, []);
+  }, [slug]);
 
   if (loading) return <Loading />;
   if (error) return <Errors />;
@@ -70,7 +77,10 @@ const HomePage = () => {
               {Data.items
                 ? Data.items.map((item) => (
                     <div>
-                      <div className="TItemsBox">
+                      <div
+                        className="TItemsBox"
+                        onClick={() => navigate(`/products/${item.slug}`)}
+                      >
                         <div className="CIMG">
                           <img src={item.DocPath} alt={item.item_name} />
                         </div>
@@ -99,7 +109,7 @@ const HomePage = () => {
                   className="post__content"
                   dangerouslySetInnerHTML={{ __html: Data.about.Description }}
                 ></div>
-                <Link to={`/${Data.about.slug}`} className="BTNSSS">
+                <Link to={`/about-us`} className="BTNSSS">
                   LEARN MORE
                 </Link>
               </div>
@@ -116,7 +126,7 @@ const HomePage = () => {
               <span> MASS HOLDINGS PVT LTD. </span>
             </p>
           </div>
-          <div className="row">
+          <div className="row servicesss">
             {Data.services
               ? Data.services.map((service) => (
                   <div className="col-sm-12 col-md-4 col-lg-4">
@@ -154,7 +164,10 @@ const HomePage = () => {
                 ? Data.brand.map((brand) => (
                     <div>
                       <div className="BIMGS">
-                        <img src={brand.DocPath} alt={brand.name} />
+                        <img
+                          src={brand?.DocPath ? brand?.DocPath : logo}
+                          alt={brand.name}
+                        />
                       </div>
                     </div>
                   ))
@@ -182,7 +195,10 @@ const HomePage = () => {
                   {Data.best_selller
                     ? Data.best_selller.map((seller) => (
                         <div>
-                          <div className="TItemsBox">
+                          <div
+                            className="TItemsBox"
+                            onClick={() => navigate(`/products/${seller.slug}`)}
+                          >
                             <div className="CIMG">
                               <img
                                 src={seller.DocPath}
@@ -211,7 +227,10 @@ const HomePage = () => {
                 ? Data.clients.map((client) => (
                     <div>
                       <div className="BIMGS">
-                        <img src={client.DocPath} alt={client.name} />
+                        <img
+                          src={client.DocPath ? client.DocPath : logo}
+                          alt={client.name}
+                        />
                       </div>
                     </div>
                   ))

@@ -194,6 +194,9 @@ a{
     width: 90%;
     margin: auto;
 }
+.TItemsBox:hover{
+    cursor: pointer;
+}
 .CIMG{
     width: 100%;
     height: 200px;
@@ -301,6 +304,15 @@ a{
     background-color: var(--SColor);
     text-align: center;
     color: var(--WColor);
+    min-height: 290px;
+}
+.SBox div img{
+    margin-bottom: 10px;
+    width: 100px;
+}
+.servicesss div:nth-child(2) .SBox div{
+    background-color:var(--MColor);
+    border-color: var(--MColor);
 }
 .CHColor div{
     background-color:var(--MColor);
@@ -330,8 +342,8 @@ a{
     border-radius: 5px;
 }
 .BIMGS img{
-    height: 100%;
-    object-fit: cover;
+    width: 100%;
+   
 }
 .BestSeller{
     background-color: var(--HScolor);

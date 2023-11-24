@@ -81,12 +81,12 @@ const Footer = () => {
                   <h2>Follow Us : </h2>
                   <ul>
                     <li>
-                      <a href={data.site_settings.facebook}>
+                      <a target="_blank" href={data.site_settings.facebook}>
                         <i className="fa-brands fa-square-facebook"></i>
                       </a>
                     </li>
                     <li>
-                      <a href={data.site_settings.instagram}>
+                      <a target="_blank" href={data.site_settings.instagram}>
                         <i className="fa-brands fa-instagram"></i>
                       </a>
                     </li>
@@ -96,7 +96,7 @@ const Footer = () => {
                       </a>
                     </li> */}
                     <li>
-                      <a href={data.site_settings.linked_in}>
+                      <a target="_blank" href={data.site_settings.linked_in}>
                         <i className="fa-brands fa-linkedin"></i>
                       </a>
                     </li>
