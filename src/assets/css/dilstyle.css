@@ -115,42 +115,12 @@ a{
 }
 .navbar-nav .nav-item .nav-link{
     color: var(--WColor);
-    padding: 8px 30px 8px 0px!important;
+    padding: 8px 25px 8px 0px!important;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
 
-@media (max-width: 768px){
-    .DN{
-        display: none;
-    }
-    .TopItems .email{
-        display: none;
-    }
-    .navbar-toggler{
-        border-color: transparent;
-    }
-    .navbar-toggler:focus{
-        box-shadow: none;
-    }
-}
-@media (max-width:425px){
-    .DN{
-        display: none;
-    }
-    .AR{
-        justify-content: flex-start;
-    }
-    .SearchForm {
-       display: block;
-     
-       padding: 10px;
-    }
-    .SearchForm input{
-        width: 90%;
-    }
-}
 .MainBanner{
     height:450px;
     overflow: hidden;
@@ -691,4 +661,82 @@ a{
 }
 .specification div table tbody tr:first-child td font{
     color: inherit!important;
+}
+
+
+
+/* responsive design  */
+
+
+@media (max-width: 1024px){
+    .TopNav .container{
+        width: 100%;
+    }
+    .TopItems li {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px){
+   .navbar  .container{
+    justify-content: flex-end!important;
+   }
+    .TopItems .email{
+        display: none;
+    }
+    .navbar-toggler{
+        border-color: transparent;
+    }
+    .navbar-toggler:focus{
+        box-shadow: none;
+    }
+    .SBox div{
+        min-height: 370px;
+    }
+    .MainTrending{
+        min-height: 75vh;
+    }
+}
+@media (max-width:425px){
+    .container{
+        padding:0rem  1rem!important;
+    }
+    .DN{
+        display: none;
+    }
+    .AR{
+        justify-content: flex-start;
+    }
+    .SearchForm {
+       display: block;
+     
+       padding: 10px;
+    }
+    .SearchForm input{
+        width:85%;
+    }
+    .TabImagess{
+        display: none;
+    }
+    .ProductsImage{
+        margin-bottom: 20px;
+    }
+    .SBox div{
+        min-height: 240px;
+    }
+    .TTitle{
+        font-size: 30px;
+    }
+    .CTitle{
+        min-height:44px;
+    }
+    .CContent h1{
+        font-size: 30px;
+    }
+    .CContent{
+        margin-top: 30px;
+    }
+    .MainTrending{
+        min-height: 70vh;
+    }
 }

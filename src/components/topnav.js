@@ -50,7 +50,7 @@ const TopNav = () => {
                 </ul>
               </div>
 
-              <div className="col-sm-12 col-md-12 col-lg-6">
+              <div className="col-sm-12 col-md-6 col-lg-6">
                 <ul className="TopItems AR">
                   {data.content.map((i, value) => {
                     return (

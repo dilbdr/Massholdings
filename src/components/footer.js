@@ -107,7 +107,8 @@ const Footer = () => {
         </div>
       </div>
       <div className="COpyRights">
-        Copyright © 2022 Mass Group | All Rights Reserved
+        Copyright &copy; {new Date().getFullYear()} Mass Group | All Rights
+        Reserved
       </div>
     </>
   );
