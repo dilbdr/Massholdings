@@ -67,7 +67,7 @@ const Footer = () => {
             <div className="col-sm-12 col-md-6 col-lg-4">
               <div className="FootMenu">
                 <div className="newslatter">
-                  <Newsletter title="Join Our Newslatter" />
+                  <Newsletter title="Join Our Newsletter" />
                 </div>
                 <div className="follow">
                   <h2>Follow Us : </h2>
