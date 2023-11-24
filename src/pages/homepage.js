@@ -69,15 +69,15 @@ const HomePage = () => {
             <Slider {...Tsettings}>
               {Data.items
                 ? Data.items.map((item) => (
-                    <div>
-                      <div className="TItemsBox">
-                        <div className="CIMG">
-                          <img src={item.DocPath} alt={item.item_name} />
-                        </div>
-                        <div className="CTitle">{item.item_name}</div>
+                  <div>
+                    <div className="TItemsBox">
+                      <div className="CIMG">
+                        <img src={item.DocPath} alt={item.item_name} />
                       </div>
+                      <div className="CTitle">{item.item_name}</div>
                     </div>
-                  ))
+                  </div>
+                ))
                 : "No Data"}
             </Slider>
           </div>
@@ -119,25 +119,25 @@ const HomePage = () => {
           <div className="row">
             {Data.services
               ? Data.services.map((service) => (
-                  <div className="col-sm-12 col-md-4 col-lg-4">
-                    <div className="SBox">
-                      <div>
-                        <img
-                          src={service.DocPath}
-                          alt={service.title}
-                          height="100"
-                        ></img>
-                        <h2>{service.title}</h2>
+                <div className="col-sm-12 col-md-4 col-lg-4">
+                  <div className="SBox">
+                    <div>
+                      <img
+                        src={service.DocPath}
+                        alt={service.title}
+                        height="100"
+                      ></img>
+                      <h2>{service.title}</h2>
 
-                        <p
-                          dangerouslySetInnerHTML={{
-                            __html: service.description,
-                          }}
-                        ></p>
-                      </div>
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: service.description,
+                        }}
+                      ></p>
                     </div>
                   </div>
-                ))
+                </div>
+              ))
               : "No Data"}
           </div>
         </div>
@@ -152,12 +152,12 @@ const HomePage = () => {
             <Slider {...Bsettings}>
               {Data.brand
                 ? Data.brand.map((brand) => (
-                    <div>
-                      <div className="BIMGS">
-                        <img src={brand.DocPath} alt={brand.name} />
-                      </div>
+                  <div>
+                    <div className="BIMGS">
+                      <img src={brand.DocPath} alt={brand.name} />
                     </div>
-                  ))
+                  </div>
+                ))
                 : ""}
             </Slider>
           </div>
@@ -181,18 +181,18 @@ const HomePage = () => {
                 <Slider {...BSsettings}>
                   {Data.best_selller
                     ? Data.best_selller.map((seller) => (
-                        <div>
-                          <div className="TItemsBox">
-                            <div className="CIMG">
-                              <img
-                                src={seller.DocPath}
-                                alt={seller.item_name}
-                              />
-                            </div>
-                            <div className="CTitle">{seller.item_name}</div>
+                      <div>
+                        <div className="TItemsBox">
+                          <div className="CIMG">
+                            <img
+                              src={seller.DocPath}
+                              alt={seller.item_name}
+                            />
                           </div>
+                          <div className="CTitle">{seller.item_name}</div>
                         </div>
-                      ))
+                      </div>
+                    ))
                     : ""}
                 </Slider>
               </div>
@@ -209,12 +209,12 @@ const HomePage = () => {
             <Slider {...Bsettings}>
               {Data.clients
                 ? Data.clients.map((client) => (
-                    <div>
-                      <div className="BIMGS">
-                        <img src={client.DocPath} alt={client.name} />
-                      </div>
+                  <div>
+                    <div className="BIMGS">
+                      <img src={client.DocPath} alt={client.name} />
                     </div>
-                  ))
+                  </div>
+                ))
                 : ""}
             </Slider>
           </div>
@@ -228,22 +228,19 @@ const HomePage = () => {
               <div className="ContactBox">
                 <h1>Contact Us</h1>
                 <p>
-                  <i className="fa-solid fa-phone"></i> 01-4376876 , 01-4379535
-                  +977- 9841885368
+                  <i className="fa-solid fa-phone"></i> {Data?.site_settings?.telephone}
                 </p>
                 <p>
-                  <i className="fa-solid fa-envelope"></i>{" "}
-                  contact@massgroup.com.np
+                  <i className="fa-solid fa-envelope"></i>{Data?.site_settings?.email}
                 </p>
                 <p>
-                  <i className="fa-solid fa-location-dot"></i> Mass Complex,
-                  Dhumbarahi-04, Kathmandu, Nepal
+                  <i className="fa-solid fa-location-dot"></i> {Data?.site_settings?.address}
                 </p>
               </div>
             </div>
             <div className="col-sm-12 col-md-6 col-lg-6">
               <div className="contMap">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14126.973188937442!2d85.32267717350263!3d27.725211070668006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19693c88645f%3A0xbf69e587bc07a866!2sDhumbarahi%2C%20Kathmandu%2044600!5e0!3m2!1sen!2snp!4v1698842941890!5m2!1sen!2snp"></iframe>
+                <iframe src={Data?.site_settings?.map_location}></iframe>
               </div>
             </div>
           </div>

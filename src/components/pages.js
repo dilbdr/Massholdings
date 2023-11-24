@@ -8,6 +8,9 @@ import "../assets/css/contact.css";
 import Loading from "../comon/loading";
 import Errors from "../comon/error";
 import { TabTitle } from "../comon/dynamicTitle";
+import Common from "../pages/common";
+
+
 const Pages = () => {
   const limit = 4;
   const { slug } = useParams();
@@ -38,11 +41,26 @@ const Pages = () => {
   if (loading) return <Loading />;
   if (error) return <Errors />;
 
-  return (
-    <>
-      {slug == "about-us" ? <About content={content} breadcrum={slug} /> : ""}
-      {slug == "contact-us" ? <Contact /> : ""}
-    </>
-  );
+  switch (slug) {
+    case 'about-us':
+      return (
+        <>
+          <About content={content} breadcrum={slug} />
+        </>
+      );
+    case 'contact-us':
+      return (
+        <>
+          <Contact />
+        </>
+      );
+    default:
+      return (
+        <>
+          <Common content={content} breadcrum={slug} />
+        </>
+      );
+  }
+
 };
 export default Pages;

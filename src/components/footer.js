@@ -17,7 +17,6 @@ const Footer = () => {
         setError(false);
         const response = await axios.get(API_URI);
         setData(response.data);
-        console.log("footer", response.data);
         setLoading(false);
       } catch (error) {
         setError(true);
