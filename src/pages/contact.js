@@ -34,20 +34,51 @@ const Contact = () => {
       <Breadcrumbs />
       <div className="container">
         <div className="contact-section">
-          <div className="details row justify-content-between w-100">
-            <div className="col-6 form d-flex">
-              <div className="header-text mb-3">Map Location</div>
-              <div className="map">
-                <iframe src={content?.map_location} ></iframe>
-              </div>
+          <div className="ContInfo">
+            <div className="cInfo">
+              <span
+                className="title-text"
+                dangerouslySetInnerHTML={{
+                  __html: content?.contact_detail
+                    ? content?.contact_detail
+                    : "No Content",
+                }}
+              ></span>
+              {/* <p>
+                <strong>
+                  {" "}
+                  <i className="fa-solid fa-phone" /> :{" "}
+                </strong>
+                {content?.mobile}
+              </p> */}
+              {/* <p>
+                <strong>
+                  {" "}
+                  <i className="fa-solid fa-envelope" /> :{" "}
+                </strong>
+                {content?.email}
+              </p> */}
+              <p>
+                {/* <strong>
+                  {" "}
+                  <i className="fa-solid fa-home" />:{" "}
+                </strong> */}
+              </p>
             </div>
-            <div className="col-5 info d-flex">
+            <div className="map">
+              <h3>Map Location</h3>
+              <iframe src={content?.map_location}></iframe>
+            </div>
+          </div>
+          {/* <div className="details">
+            
+            <div className="info">
+              
               <div className="contact-number">
                 <div className="title-text">
-                  {" "}
-                  <i className="fa-solid fa-phone" /> Contact Number
+                 
                 </div>
-                <div className="title-text">{content?.mobile}</div>
+                <div className="title-text"></div>
               </div>
               <div className="email">
                 <div className="title-text">
@@ -83,7 +114,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

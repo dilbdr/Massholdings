@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import WLOgo from "../assets/img/mh-logo-white.png";
 import Loading from "../comon/loading";
 import Errors from "../comon/error";
+import GoToP from "../comon/gototop";
 const API_URI = "https://admin.massholdings.com.np/api/footer";
 const Footer = () => {
   const { slug } = useParams();
@@ -106,6 +107,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <GoToP />
       <div className="COpyRights">
         Copyright &copy; {new Date().getFullYear()} Mass Group | All Rights
         Reserved
