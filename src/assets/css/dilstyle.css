@@ -740,3 +740,9 @@ a{
         min-height: 70vh;
     }
 }
+
+@media (max-width:375px){
+    .TopItems li{
+        font-size: 12px;
+    }
+}
