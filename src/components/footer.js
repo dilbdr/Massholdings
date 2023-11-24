@@ -5,6 +5,7 @@ import WLOgo from "../assets/img/mh-logo-white.png";
 import Loading from "../comon/loading";
 import Errors from "../comon/error";
 import GoToP from "../comon/gototop";
+import Newsletter from "../pages/NewsLetter";
 const API_URI = "https://admin.massholdings.com.np/api/footer";
 const Footer = () => {
   const { slug } = useParams();
@@ -67,15 +68,7 @@ const Footer = () => {
             <div className="col-sm-12 col-md-6 col-lg-4">
               <div className="FootMenu">
                 <div className="newslatter">
-                  <h2>Join Our Newslatter</h2>
-                  <form>
-                    <input
-                      required
-                      type="email"
-                      placeholder="Enter Email Address"
-                    />
-                    <button>Join</button>
-                  </form>
+                  <Newsletter title="Join Our Newsletter" />
                 </div>
                 <div className="follow">
                   <h2>Follow Us : </h2>
