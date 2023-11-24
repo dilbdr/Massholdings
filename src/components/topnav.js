@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../comon/loading";
 import Errors from "../comon/error";
+import Search from "../components/search";
 const API_URI = "https://admin.massholdings.com.np/api/head";
 const TopNav = () => {
   const { slug } = useParams();
@@ -17,7 +18,6 @@ const TopNav = () => {
         setError(false);
         const response = await axios.get(API_URI);
         setData(response.data);
-        console.log("head", response.data);
         setLoading(false);
       } catch (error) {
         setError(true);
@@ -79,12 +79,7 @@ const TopNav = () => {
               </div>
               <div className="col-sm-12 col-md-6 col-lg-6">
                 <div className="SearchForm AR">
-                  <form action="#">
-                    <input type="search" placeholder="Search" />
-                    <button>
-                      <i className="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                  </form>
+                  <Search />
                 </div>
               </div>
             </div>

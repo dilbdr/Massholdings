@@ -38,7 +38,7 @@ const Contact = () => {
             <div className="col-6 form d-flex">
               <div className="header-text mb-3">Map Location</div>
               <div className="map">
-                <iframe src={content?.map_location}></iframe>
+                <iframe src={content?.map_location} ></iframe>
               </div>
             </div>
             <div className="col-5 info d-flex">
