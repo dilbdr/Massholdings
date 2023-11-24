@@ -6,13 +6,14 @@ import Errors from "../comon/error";
 const API_URI = "https://admin.massholdings.com.np/api/footer";
 const Newsletter = (props) => {
     const textMessage = document.querySelector('.text-white');
+    const [msg, setMsg] = useState();
     const title = props.title
     const sumbitForm = (e) => {
         e.preventDefault();
         axios
             .post("https://admin.massholdings.com.np/api/newsletter", { email })
             .then(response => {
-                console.log(response, response.status, response.data.status_message);
+                setMsg(response.data.status_message);
                 if (response.status == 200) {
                     textMessage.innerHTML = response.data.status_message
 
@@ -22,13 +23,15 @@ const Newsletter = (props) => {
     }
 
     const [email, setEmail] = useState();
-    setTimeout(function () {
+    useEffect(() => {
+        setTimeout(function () {
+            if (msg) {
+                textMessage.innerHTML = ''
+                setEmail('');
+            }
 
-        // if (textMessage.textContent) {
-        textMessage.innerHTML = ''
-
-        // }
-    }, 1000);
+        }, 1000);
+    }, [msg]);
     return (
         <>
             <h2>{title}</h2>
