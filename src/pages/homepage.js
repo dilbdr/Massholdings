@@ -24,6 +24,29 @@ const HomePage = () => {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   var Bsettings = {
     dots: false,
@@ -76,24 +99,23 @@ const HomePage = () => {
             <Slider {...Tsettings}>
               {Data.items
                 ? Data.items.map((item) => (
-                  <div>
-                    <div
-                      className="TItemsBox"
-                      onClick={() => navigate(`/products/${item.slug}`)}
-                    >
-                      <div className="CIMG">
-                        <img src={item.DocPath} alt={item.item_name} />
+                    <div>
+                      <div
+                        className="TItemsBox"
+                        onClick={() => navigate(`/products/${item.slug}`)}
+                      >
+                        <div className="CIMG">
+                          <img src={item.DocPath} alt={item.item_name} />
+                        </div>
+                        <div className="CTitle">{item.item_name}</div>
                       </div>
-                      <div className="CTitle">{item.item_name}</div>
                     </div>
-                    <div className="CTitle">{item.item_name}</div>
-                  </div>
-                ))
+                  ))
                 : "No Data"}
             </Slider>
           </div>
-        </div >
-      </div >
+        </div>
+      </div>
 
       <div className="CompanyIntro">
         <div className="container">
@@ -130,25 +152,25 @@ const HomePage = () => {
           <div className="row servicesss">
             {Data.services
               ? Data.services.map((service) => (
-                <div className="col-sm-12 col-md-4 col-lg-4">
-                  <div className="SBox">
-                    <div>
-                      <img
-                        src={service.DocPath}
-                        alt={service.title}
-                        height="100"
-                      ></img>
-                      <h2>{service.title}</h2>
+                  <div className="col-sm-12 col-md-4 col-lg-4">
+                    <div className="SBox">
+                      <div>
+                        <img
+                          src={service.DocPath}
+                          alt={service.title}
+                          height="100"
+                        ></img>
+                        <h2>{service.title}</h2>
 
-                      <p
-                        dangerouslySetInnerHTML={{
-                          __html: service.description,
-                        }}
-                      ></p>
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: service.description,
+                          }}
+                        ></p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
+                ))
               : "No Data"}
           </div>
         </div>
@@ -163,20 +185,20 @@ const HomePage = () => {
             <Slider {...Bsettings}>
               {Data.brand
                 ? Data.brand.map((brand) => (
-                  <div>
-                    <div className="BIMGS">
-                      <img
-                        src={brand?.DocPath ? brand?.DocPath : logo}
-                        alt={brand.name}
-                      />
+                    <div>
+                      <div className="BIMGS">
+                        <img
+                          src={brand?.DocPath ? brand?.DocPath : logo}
+                          alt={brand.name}
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))
+                  ))
                 : ""}
             </Slider>
           </div>
-        </div >
-      </div >
+        </div>
+      </div>
       <div className="BestSeller">
         <div className="container">
           <div className="row">
@@ -195,29 +217,28 @@ const HomePage = () => {
                 <Slider {...BSsettings}>
                   {Data.best_selller
                     ? Data.best_selller.map((seller) => (
-                      <div>
-                        <div
-                          className="TItemsBox"
-                          onClick={() => navigate(`/products/${seller.slug}`)}
-                        >
-                          <div className="CIMG">
-                            <img
-                              src={seller.DocPath}
-                              alt={seller.item_name}
-                            />
+                        <div>
+                          <div
+                            className="TItemsBox"
+                            onClick={() => navigate(`/products/${seller.slug}`)}
+                          >
+                            <div className="CIMG">
+                              <img
+                                src={seller.DocPath}
+                                alt={seller.item_name}
+                              />
+                            </div>
+                            <div className="CTitle">{seller.item_name}</div>
                           </div>
-                          <div className="CTitle">{seller.item_name}</div>
                         </div>
-                        <div className="CTitle">{seller.item_name}</div>
-                      </div>
-                    ))
+                      ))
                     : ""}
                 </Slider>
               </div>
             </div>
           </div>
-        </div >
-      </div >
+        </div>
+      </div>
       <div className="MainBrand">
         <div className="container">
           <div className="STitle">
@@ -227,20 +248,20 @@ const HomePage = () => {
             <Slider {...Bsettings}>
               {Data.clients
                 ? Data.clients.map((client) => (
-                  <div>
-                    <div className="BIMGS">
-                      <img
-                        src={client.DocPath ? client.DocPath : logo}
-                        alt={client.name}
-                      />
+                    <div>
+                      <div className="BIMGS">
+                        <img
+                          src={client.DocPath ? client.DocPath : logo}
+                          alt={client.name}
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))
+                  ))
                 : ""}
             </Slider>
           </div>
-        </div >
-      </div >
+        </div>
+      </div>
 
       <div className="MainContact">
         <div className="container">
@@ -249,13 +270,16 @@ const HomePage = () => {
               <div className="ContactBox">
                 <h1>Contact Us</h1>
                 <p>
-                  <i className="fa-solid fa-phone"></i> {Data?.site_settings?.telephone}
+                  <i className="fa-solid fa-phone"></i>{" "}
+                  {Data?.site_settings?.telephone}
                 </p>
                 <p>
-                  <i className="fa-solid fa-envelope"></i>{Data?.site_settings?.email}
+                  <i className="fa-solid fa-envelope"></i>
+                  {Data?.site_settings?.email}
                 </p>
                 <p>
-                  <i className="fa-solid fa-location-dot"></i> {Data?.site_settings?.address}
+                  <i className="fa-solid fa-location-dot"></i>{" "}
+                  {Data?.site_settings?.address}
                 </p>
               </div>
             </div>

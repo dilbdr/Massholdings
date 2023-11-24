@@ -10,7 +10,6 @@ import Errors from "../comon/error";
 import { TabTitle } from "../comon/dynamicTitle";
 import Common from "../pages/common";
 
-
 const Pages = () => {
   const limit = 4;
   const { slug } = useParams();
@@ -36,19 +35,19 @@ const Pages = () => {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [slug]);
 
   if (loading) return <Loading />;
   if (error) return <Errors />;
 
   switch (slug) {
-    case 'about-us':
+    case "about-us":
       return (
         <>
           <About content={content} breadcrum={slug} />
         </>
       );
-    case 'contact-us':
+    case "contact-us":
       return (
         <>
           <Contact />
@@ -61,6 +60,5 @@ const Pages = () => {
         </>
       );
   }
-
 };
 export default Pages;
