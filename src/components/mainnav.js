@@ -4,7 +4,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../comon/loading";
 import Errors from "../comon/error";
-const API_URI = "https://admin.massholdings.com.np/api/products/10/1";
+const API_URI = "https://admin.massholdings.com.np/api/category/";
 const MainNav = () => {
   const { slug } = useParams();
   const [data, setData] = useState([]);
@@ -17,13 +17,14 @@ const MainNav = () => {
         setError(false);
         const response = await axios.get(API_URI);
         setData(response.data);
+        console.log("METU_ITEMS______", response.data.items);
         setLoading(false);
       } catch (error) {
         setError(true);
         setLoading(false);
       }
     })();
-  }, []);
+  }, [slug]);
 
   if (loading) return "";
   if (error) return <Errors />;
@@ -44,16 +45,38 @@ const MainNav = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
-              {data.items.map((i, value) => {
+              {data.items.map((category, index) => {
                 return (
-                  <li className="nav-item" key={value}>
-                    <Link
-                      className="nav-link active"
-                      aria-current="page"
-                      to={`products/${i.slug}`}
+                  <li className="nav-item dropdown" key={index}>
+                    <a
+                      className={`nav-link ${
+                        category.child.length === 0 ? "" : "dropdown-toggle"
+                      }`}
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                     >
-                      {i.item_name}
-                    </Link>
+                      {category.title}
+                    </a>
+                    <ul className="dropdown-menu">
+                      {category.child.length === 0
+                        ? ""
+                        : category.child.map((ch, index) => {
+                            return (
+                              <>
+                                <li key={index}>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`products/${ch.slug}`}
+                                  >
+                                    {ch.title}
+                                  </Link>
+                                </li>
+                              </>
+                            );
+                          })}
+                    </ul>
                   </li>
                 );
               })}

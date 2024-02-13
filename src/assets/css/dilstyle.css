@@ -116,7 +116,7 @@ a{
 .navbar-nav .nav-item .nav-link{
     color: var(--WColor);
     padding: 8px 25px 8px 0px!important;
-    font-size: 12px;
+    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
@@ -555,9 +555,9 @@ a{
 .about-section{
     margin-bottom: 20px;
 }
-.insideContent{
+/* .insideContent{
     padding: 20px;
-}
+} */
 .insideContent h1{
     color: var(--red);
     font-size: 40px;
@@ -701,6 +701,37 @@ a{
 .map iframe{
     width: 100%;
     height: 300px;
+}
+
+.dropdown-menu{
+    border: none;
+    background-color: var(--red);
+    margin-top:0px!important;
+    border-radius:0px;
+    padding: 0px;
+    border-bottom:1px solid var(--red);
+}
+.dropdown-menu li{
+    color: var(--WColor);
+    border-top: 1px solid #bc414d;
+}
+.dropdown-menu li:hover{
+    background-color: var(--MColor)!important;
+}
+.dropdown-menu li a{
+    color: inherit;
+}
+.dropdown-item{
+    font-size: 12px!important;
+    text-transform: uppercase;
+    padding: 10px 20px;
+}
+.dropdown-item:hover{
+    color: var(--red);
+}
+
+.dropdown:hover .dropdown-menu{
+    display: block;
 }
 
 /* responsive design  */
