@@ -25,7 +25,7 @@ const MainNav = () => {
       }
     })();
   }, [slug]);
-
+  
   if (loading) return "";
   if (error) return <Errors />;
   return (
@@ -76,7 +76,7 @@ const MainNav = () => {
                       <ul className="dropdown-menu">
                         {category?.child === undefined
                           ? ""
-                          : category.child.map((ch, index) => {
+                          : category?.child.map((ch, index) => {
                               return (
                                 <>
                                   <li key={index}>
