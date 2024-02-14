@@ -7,7 +7,7 @@ import Products from "../pages/products";
 import Pages from "../components/pages";
 import ProductsDetails from "../pages/productsDetails";
 import SearchPage from "../pages/searchpage";
-
+import Category from "../pages/category";
 const MyRoutes = () => {
   const [loading, setLoading] = useState(true);
   const spinner = document.getElementById("spinner");
@@ -26,6 +26,7 @@ const MyRoutes = () => {
           <Route path="/search/:slug" element={<SearchPage />} />
           <Route path=":slug" element={<Pages />} />
           <Route path="products/:slug" element={<Products />} />
+          <Route path="category/:slug" element={<Category />} />
           <Route path="products/details/:slug" element={<ProductsDetails />} />
         </Routes>
         <Footer />

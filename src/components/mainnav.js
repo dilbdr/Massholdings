@@ -46,39 +46,54 @@ const MainNav = () => {
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
               {data.items.map((category, index) => {
-                return (
-                  <li className="nav-item dropdown" key={index}>
-                    <a
-                      className={`nav-link ${
-                        category.child.length === 0 ? "" : "dropdown-toggle"
-                      }`}
-                      href="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      {category.title}
-                    </a>
-                    <ul className="dropdown-menu">
-                      {category.child.length === 0
-                        ? ""
-                        : category.child.map((ch, index) => {
-                            return (
-                              <>
-                                <li key={index}>
-                                  <Link
-                                    className="dropdown-item"
-                                    to={`products/${ch.slug}`}
-                                  >
-                                    {ch.title}
-                                  </Link>
-                                </li>
-                              </>
-                            );
-                          })}
-                    </ul>
-                  </li>
-                );
+                if (typeof category?.child === "undefined") {
+                  return (
+                    <>
+                      <li className="nav-item">
+                        <Link
+                          className="nav-link"
+                          to={`category/${category.slug}`}
+                        >
+                          {category.title}
+                        </Link>
+                      </li>
+                    </>
+                  );
+                } else {
+                  return (
+                    <li className="nav-item dropdown" key={index}>
+                      <Link
+                        className={`nav-link ${
+                          category?.child === undefined ? "" : "dropdown-toggle"
+                        }`}
+                        to="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        {category.title}
+                      </Link>
+                      <ul className="dropdown-menu">
+                        {category?.child === undefined
+                          ? ""
+                          : category.child.map((ch, index) => {
+                              return (
+                                <>
+                                  <li key={index}>
+                                    <Link
+                                      className="dropdown-item"
+                                      to={`products/${ch.slug}`}
+                                    >
+                                      {ch.title}
+                                    </Link>
+                                  </li>
+                                </>
+                              );
+                            })}
+                      </ul>
+                    </li>
+                  );
+                }
               })}
             </ul>
           </div>
