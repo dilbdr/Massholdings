@@ -8,8 +8,13 @@ import Loading from "../comon/loading";
 import Errors from "../comon/error";
 import { TabTitle } from "../comon/dynamicTitle";
 import Breadcrumbs from "../comon/breadcrumbs";
-import LazyLoad from "react-lazy-load";
+import Pagination from "react-js-pagination";
 const Products = () => {
+  const [isPage, setActive] = React.useState(0);
+  const handlePageChange = (pageNumber) => {
+    // const pagesss = pageNumber * 8;
+    setActive(pageNumber);
+  };
   const { slug } = useParams();
   TabTitle(`Mass Holdings | ${slug}`);
   const [data, setData] = useState([]);
@@ -21,159 +26,68 @@ const Products = () => {
         setLoading(true);
         setError(false);
         const response = await axios.get(
-          `https://admin.massholdings.com.np/api/products/detail/${slug}`
+          `https://admin.massholdings.com.np/api/products/all/${slug}/${isPage}`
         );
-        setData(response.data.detail);
-        console.log("products", response.data.detail);
+        setData(response.data);
+        console.log("products", response.data);
         setLoading(false);
       } catch (error) {
         setError(true);
         setLoading(false);
       }
     })();
-  }, [slug]);
+  }, [slug, isPage]);
 
   if (loading) return <Loading />;
   if (error) return <Errors />;
   return (
     <>
       <Breadcrumbs />
-      <div className="productsDetails">
-        <LazyLoad>
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-12 col-md-3 col-lg-2">
-                <div className="TabImagess">
-                  {data
-                    ? data.img.map((image, index) => (
-                        <div
-                          key={index}
-                          className="imgss"
-                          type="button"
-                          data-bs-toggle="modal"
-                          data-bs-target={`#imagemodel${image.id}`}
-                        >
-                          <img
-                            src={image.DocPath}
-                            className="card-img-top active"
-                            alt={data.item_name}
-                          />
-                        </div>
-                      ))
-                    : error}
-                  {data
-                    ? data.img.map((image, index) => (
-                        <div
-                          key={index}
-                          className="modal fade"
-                          id={`imagemodel${image.id}`}
-                          tabIndex={-1}
-                          aria-labelledby="exampleModalLabel"
-                          aria-hidden="true"
-                        >
-                          <div className="modal-dialog">
-                            <div className="modal-content">
-                              <div className="modal-body">
-                                <button
-                                  type="button"
-                                  className="btn-close"
-                                  data-bs-dismiss="modal"
-                                  aria-label="Close"
-                                />
 
-                                <img
-                                  src={image.DocPath}
-                                  className="card-img-top active"
-                                  alt={data.item_name}
-                                />
-                              </div>
-                            </div>
+      <div className="ProductsItemsss">
+        <div className="container">
+          <div className="row">
+            {data.length === 0
+              ? "No items"
+              : data?.items?.map((Itemss, index) => {
+                  return (
+                    <>
+                      <div className="col-sm-12 col-md-6 col-lg-3" key={index}>
+                        <div className="ItemsBox">
+                          <div className="image">
+                            <Link to={`../../products/details/${Itemss.slug}`}>
+                              <img src={Itemss.DocPath} alt="Products Image" />
+                            </Link>
+                          </div>
+                          <div className="title">
+                            <Link to={`../../products/details/${Itemss.slug}`}>
+                              <h2>{Itemss.item_name}</h2>
+                            </Link>
                           </div>
                         </div>
-                      ))
-                    : error}
-                </div>
-              </div>
-              <div className="col-sm-12 col-md-9 col-lg-10">
-                <div className="row">
-                  <div className="col-sm-12 col-md-6 col-lg-4">
-                    <div className="ProductsImage">
-                      <img
-                        src={data.img[0] ? data.img[0].DocPath : logo}
-                        className="card-img-top w-100"
-                        alt={data.item_name}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-sm-12 col-md-6 col-lg-8">
-                    <div className="BrandImage">
-                      <h1>
-                        Brand : <span>{data?.brand_name}</span>
-                      </h1>
-                      <img
-                        src={data.brand_image ? data.brand_image : logo}
-                        className="card-img-top w-100"
-                        alt={data?.brand_name}
-                      />
-                    </div>
-                    <div className="Products_details">
-                      <h1>
-                        Product Name : <span>{data.item_name}</span>{" "}
-                      </h1>
-                      <h1>Description</h1>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: data.description
-                            ? data.description
-                            : "No Content",
-                        }}
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="specification">
-                  <h1>Specification</h1>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: data.specification
-                        ? data.specification
-                        : "No Content",
-                    }}
-                  ></div>
-                  {/* <h1>{data.item_name} </h1> */}
-                  {/* <Tabs>
-                  <TabList>
-                    <Tab>Description</Tab>
-                    <Tab>Specification</Tab>
-                    <Tab>Watch Video</Tab>
-                  </TabList>
-                  <TabPanel>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: data.description
-                          ? data.description
-                          : "No Content",
-                      }}
-                    ></div>
-                  </TabPanel>
-                  <TabPanel>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: data.specification
-                          ? data.specification
-                          : "No Content",
-                      }}
-                    ></div>
-                  </TabPanel>
-                  <TabPanel>
-                    <div>Video</div>
-                  </TabPanel>
-                </Tabs> */}
-                </div>
-              </div>
-            </div>
+                      </div>
+                    </>
+                  );
+                })}
           </div>
-        </LazyLoad>
+          {data.total > 8 ? (
+            <div className="MainPagination">
+              <Pagination
+                activePage={isPage}
+                itemsCountPerPage={8}
+                totalItemsCount={data.total}
+                pageRangeDisplayed={5}
+                firstPageText="First Page"
+                lastPageText="Last Page"
+                itemClass="page-item"
+                linkClass="page-link"
+                onChange={handlePageChange}
+              />
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </>
   );

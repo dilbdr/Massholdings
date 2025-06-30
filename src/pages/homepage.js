@@ -22,13 +22,13 @@ const HomePage = () => {
     infinite: true,
     autoplay: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 4,
           slidesToScroll: 1,
         },
       },
@@ -81,7 +81,7 @@ const HomePage = () => {
   };
   var BSsettings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     autoplay: true,
     speed: 500,
     slidesToShow: 3,
@@ -148,12 +148,16 @@ const HomePage = () => {
                     <div>
                       <div
                         className="TItemsBox"
-                        onClick={() => navigate(`/products/${item.slug}`)}
+                        onClick={() =>
+                          navigate(`/products/details/${item.slug}`)
+                        }
                       >
                         <div className="CIMG">
                           <img src={item.DocPath} alt={item.item_name} />
                         </div>
-                        <div className="CTitle">{item.item_name}</div>
+                        <div className="CTitle">
+                          <h2>{item.item_name}</h2>
+                        </div>
                       </div>
                     </div>
                   ))
@@ -266,7 +270,9 @@ const HomePage = () => {
                         <div>
                           <div
                             className="TItemsBox"
-                            onClick={() => navigate(`/products/${seller.slug}`)}
+                            onClick={() =>
+                              navigate(`/products/details/${seller.slug}`)
+                            }
                           >
                             <div className="CIMG">
                               <img

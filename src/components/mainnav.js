@@ -25,7 +25,7 @@ const MainNav = () => {
       }
     })();
   }, [slug]);
-  
+
   if (loading) return "";
   if (error) return <Errors />;
   return (
@@ -50,10 +50,13 @@ const MainNav = () => {
                   return (
                     <>
                       <li className="nav-item">
-                        <Link
+                        {/* <Link
                           className="nav-link"
                           to={`category/${category.slug}`}
                         >
+                          {category.title}
+                        </Link> */}
+                        <Link className="nav-link" to={`#`}>
                           {category.title}
                         </Link>
                       </li>

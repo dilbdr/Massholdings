@@ -102,7 +102,7 @@ const Footer = () => {
       </div>
       <GoToP />
       <div className="COpyRights">
-        Copyright &copy; {new Date().getFullYear()} Mass Group | All Rights
+        Copyright &copy; {new Date().getFullYear()} Mass Holdings | All Rights
         Reserved
       </div>
     </>
