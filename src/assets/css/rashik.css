@@ -1,0 +1,138 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+:root {
+    --white: #FFFCF9;
+    --white-50: #FFFCF980;
+    --black: #080808;
+    --black-75: #080808bf;
+    --black-50: #08080880;
+    --black-25: #08080840;
+    --black-15: #08080815;
+    --red: #aa1e2c;
+    --red-75: #aa1e2cbf;
+    --red-50: #aa1e2c80;
+    --red-25: #aa1e2c40;
+    --blue: #1A9ACF;
+    --blue-75: #1A9ACFbf;
+    --blue-50: #1A9ACF80;
+    --blue-25: #1A9ACF40;
+    --red-linear: linear-gradient(135deg, #AA1E2C 0%, #7A333A 100%);
+    --blue-linear: linear-gradient(135deg, #1A9ACF 0%, #A5E5FF 100%);
+    --dark-blue-linear: linear-gradient(135deg, #047EB0 0%, #6A8B99 100%);
+    --shadow1: 0px 4px 24px 0px rgba(8, 8, 8, 0.25);
+    --shadow3: 2px 1px 8px 0px rgba(0, 0, 0, 0.50);
+}
+
+.small-text {
+    font-size: 14px;
+}
+
+.normal-text {
+    font-size: 1rem;
+    line-height: 28px;
+    text-align: justify;
+}
+
+.header-text {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.big-text {
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.menu-text {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.btn-text {
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+ul{
+    padding-left: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+p{
+    margin-bottom: 0px !important;
+}
+
+/* NAVBAR */
+nav .top{
+    background: var(--blue-linear);
+    color: white;
+}
+
+nav ul{
+    list-style-type: none;
+}
+
+nav ul li a{
+    gap: 8px;
+}
+
+nav .bottom .logo img{
+    height: 60px;
+    object-fit: contain;
+}
+
+nav .bottom .menu li{
+    color: var(--black-50);
+    transition: all 0.5s ease;
+}
+
+nav .bottom .menu li:hover{
+    color: var(--red);
+}
+nav .bottom .logo span{
+    color: var(--blue);
+}
+
+/* SEARCH BAR */
+.search input{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.search input,.search button{
+    border:1px solid;
+    border-color: transparent;
+    padding: 5px 10px;
+  
+}
+.search input:focus{
+    outline: 1px solid var(--blue);
+}
+.search input::placeholder{
+    font-size: 14px;
+}
+.search button{
+    background: var(--red);
+    color: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/* FOOTER */
+.footer{
+    background: var(--red-linear);
+    color: white;
+}
+
+.footer .social i{
+    font-size: 20px;
+}
+
+.footer .copyright{
+    background: var(--blue);
+}

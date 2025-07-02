@@ -26,10 +26,6 @@ a{
     --blue-linear: linear-gradient(135deg, #1A9ACF 0%, #A5E5FF 100%);
     
 }
-.container{
-    padding: 0px!important;
-   
-}
 /* @media (max-width:2560px){
     .container{
        max-width: 1825px;

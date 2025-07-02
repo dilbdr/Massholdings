@@ -8,6 +8,8 @@ import Pages from "../components/pages";
 import ProductsDetails from "../pages/productsDetails";
 import SearchPage from "../pages/searchpage";
 import Category from "../pages/category";
+import Navbar from "../components/Navbar";
+import NewFooter from "../components/NewFooter";
 const MyRoutes = () => {
   const [loading, setLoading] = useState(true);
   const spinner = document.getElementById("spinner");
@@ -20,7 +22,8 @@ const MyRoutes = () => {
   return (
     !loading && (
       <>
-        <Header />
+        <Navbar />
+        {/* <Header /> */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/search/:slug" element={<SearchPage />} />
@@ -29,7 +32,8 @@ const MyRoutes = () => {
           <Route path="category/:slug" element={<Category />} />
           <Route path="products/details/:slug" element={<ProductsDetails />} />
         </Routes>
-        <Footer />
+        <NewFooter />
+        {/* <Footer /> */}
       </>
     )
   );
