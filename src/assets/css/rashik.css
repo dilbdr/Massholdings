@@ -1,3 +1,12 @@
+/* LATO FONT */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/* LIBRE BASKERVILLE */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* RALEWAY */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -12,47 +21,81 @@
     --black-50: #08080880;
     --black-25: #08080840;
     --black-15: #08080815;
+    --gray:#eeeeee;
     --red: #aa1e2c;
     --red-75: #aa1e2cbf;
     --red-50: #aa1e2c80;
     --red-25: #aa1e2c40;
-    --blue: #1A9ACF;
-    --blue-75: #1A9ACFbf;
-    --blue-50: #1A9ACF80;
-    --blue-25: #1A9ACF40;
+    --blue: #157EBA;
+    --blue-75: #157EBAbf;
+    --blue-50: #157EBA80;
+    --blue-25: #157EBA40;
     --red-linear: linear-gradient(135deg, #AA1E2C 0%, #7A333A 100%);
-    --blue-linear: linear-gradient(135deg, #1A9ACF 0%, #A5E5FF 100%);
+    --blue-linear: linear-gradient(135deg, #157EBA 0%, #A5E5FF 100%);
     --dark-blue-linear: linear-gradient(135deg, #047EB0 0%, #6A8B99 100%);
     --shadow1: 0px 4px 24px 0px rgba(8, 8, 8, 0.25);
     --shadow3: 2px 1px 8px 0px rgba(0, 0, 0, 0.50);
 }
 
+.shadow-1{
+    box-shadow: var(--shadow1);
+}
+
+.shadow-3{
+    box-shadow: var(--shadow3);
+}
+
+.text-blue{
+    color: var(--blue);
+}
+
+.text-red{
+    color: var(--red);
+}
+
+.bg-gray{
+    background: var(--gray);
+}
+
+.bg-red{
+    background: var(--red-linear);
+}
+
+.bg-blue{
+    background: var(--blue-linear);
+}
+
 .small-text {
+    font-family: "Lato", sans-serif;
     font-size: 14px;
 }
 
 .normal-text {
+    font-family: "Lato", sans-serif;
     font-size: 1rem;
-    line-height: 28px;
-    text-align: justify;
+    line-height: 24px;
 }
 
 .header-text {
+    font-family: "Raleway", sans-serif;
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .big-text {
+    font-family: "Libre Baskerville", serif;
     font-size: 40px;
     font-weight: 800;
 }
 
 .menu-text {
-    font-weight: bold;
+    font-family: "Raleway", serif;
+    font-weight: 700;
     font-size: 1rem;
 }
 
 .btn-text {
+    font-family: "Raleway", serif;
     font-weight: 600;
     font-size: 1rem;
     letter-spacing: 4px;
@@ -87,14 +130,61 @@ nav .bottom .logo img{
     object-fit: contain;
 }
 
-nav .bottom .menu li{
+nav .bottom .menu .child-1{
     color: var(--black-50);
     transition: all 0.5s ease;
 }
 
-nav .bottom .menu li:hover{
+nav .bottom .menu .child-1:hover{
     color: var(--red);
 }
+
+nav .bottom .menu .child-1:hover .sub-menu{
+    visibility: visible;
+    transform: translateY(26px);
+    transform: translateX(-50%);
+}
+
+nav .bottom .menu .sub-menu{
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    top: 20px;
+    left: 50%;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0px 4px 4px #08080863;
+    visibility: hidden;
+    transition: all 0.3s ease-in;
+}
+
+nav .bottom .menu .sub-menu .title:hover{
+    background-color: #eee;
+}
+
+nav .bottom .menu .sub-menu .child-2{
+    position: absolute;
+    top: 0;
+    left: 100%;
+    visibility: hidden;
+    background-color: white;
+    width: 100%;
+}
+
+nav .bottom .menu .sub-menu .title:hover .child-2{
+    visibility: visible;
+}
+
+nav .bottom .menu .sub-menu .title:hover .child-2 .product-title{
+    padding: 1rem;
+}
+
+nav .bottom .menu .sub-menu .title:hover .child-2 .product-title:hover{
+    background-color: #eee;
+}
+
 nav .bottom .logo span{
     color: var(--blue);
 }
@@ -135,4 +225,41 @@ nav .bottom .logo span{
 
 .footer .copyright{
     background: var(--blue);
+}
+
+/* CARD */
+.main-card{
+    min-height: 280px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.main-card:hover{
+    scale: 1.02;
+}
+
+.main-card .detail{
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+}
+
+.main-card:hover .detail{
+    text-decoration: underline;
+}
+
+.swiper-button-prev, 
+.swiper-rtl, .swiper-button-next {
+    color: var(--black-50) !important;
+}
+
+.swiper-button-prev:hover, 
+.swiper-rtl:hover, .swiper-button-next:hover {
+    color: var(--black-75) !important;
+}
+
+.swiper-button-prev:after, 
+.swiper-button-next:after {
+    font-size: 32px !important;
 }

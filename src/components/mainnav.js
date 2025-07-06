@@ -50,12 +50,6 @@ const MainNav = () => {
                   return (
                     <>
                       <li className="nav-item">
-                        {/* <Link
-                          className="nav-link"
-                          to={`category/${category.slug}`}
-                        >
-                          {category.title}
-                        </Link> */}
                         <Link className="nav-link" to={`#`}>
                           {category.title}
                         </Link>

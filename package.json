@@ -22,6 +22,7 @@
     "react-slick": "^0.29.0",
     "react-tabs": "^6.0.2",
     "slick-carousel": "^1.8.1",
+    "swiper": "^11.2.10",
     "use-react-router-breadcrumbs": "^4.0.1",
     "web-vitals": "^2.1.4"
   },

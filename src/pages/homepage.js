@@ -8,6 +8,8 @@ import Loading from "../comon/loading";
 import Errors from "../comon/error";
 import { TabTitle } from "../comon/dynamicTitle";
 import logo from "../assets/img/logo.png";
+import HomeFeatureProduct from "../components/HomeFeatureProduct";
+import HomeIntro from "../components/HomeIntro";
 const API_URI = "https://admin.massholdings.com.np/api/home";
 const HomePage = () => {
   const { slug } = useParams();
@@ -20,7 +22,7 @@ const HomePage = () => {
   var Tsettings = {
     dots: false,
     infinite: true,
-    autoplay: true,
+    autoplay: false,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -138,36 +140,16 @@ const HomePage = () => {
     <>
       <Banner banner={Data.banner ? Data.banner : []} />
 
-      <div className="MainTrending">
-        <div className="container">
-          <div className="TTitle">Featured Products</div>
-          <div className="TItems">
-            <Slider {...Tsettings}>
-              {Data.items
-                ? Data.items.map((item) => (
-                    <div>
-                      <div
-                        className="TItemsBox"
-                        onClick={() =>
-                          navigate(`/products/details/${item.slug}`)
-                        }
-                      >
-                        <div className="CIMG">
-                          <img src={item.DocPath} alt={item.item_name} />
-                        </div>
-                        <div className="CTitle">
-                          <h2>{item.item_name}</h2>
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                : "No Data"}
-            </Slider>
-          </div>
+      <div className="bg-gray">
+        <div className="container py-5">
+          <div className="big-text text-red pb-3">Featured Products</div>
+          <HomeFeatureProduct data={Data.items ? Data.items : []}/>
         </div>
       </div>
 
-      <div className="CompanyIntro">
+      <HomeIntro data={Data.about ? Data.about : []}/>
+
+      {/* <div className="CompanyIntro">
         <div className="container">
           <div className="row">
             <div className="col-sm-12 col-md-6 col-lg-6">
@@ -189,7 +171,8 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+
       <div className="MainServices">
         <div className="container">
           <div className="STitle">
@@ -249,6 +232,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
       <div className="BestSeller">
         <div className="container">
           <div className="row">
@@ -291,6 +275,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
       <div className="MainBrand">
         <div className="container">
           <div className="STitle">
