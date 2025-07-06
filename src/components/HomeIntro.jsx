@@ -6,23 +6,21 @@ const HomeIntro = ({data}) => {
     <div className="CompanyIntro">
         <div className="container">
             <div className="row">
-            <div className="col-sm-12 col-md-6 col-lg-6">
-                <div className="CImages">
+                <div className="col-sm-12 col-md-6 col-lg-6">
                     <img src={data.CoverImage} alt={data.PageTitle} />
                 </div>
-            </div>
-            <div className="col-sm-12 col-md-6 col-lg-6">
-                <div className="CContent">
-                <h1>{data.PageTitle}</h1>
-                <div
-                    className="post__content"
-                    dangerouslySetInnerHTML={{ __html: data.Description }}
-                ></div>
-                <Link to={`/about-us`} className="BTNSSS">
-                    LEARN MORE
-                </Link>
+                <div className="col-sm-12 col-md-6 col-lg-6">
+                    <h1 className='big-text text-blue'>{data.PageTitle}</h1>
+                    <div
+                        className="normal-text"
+                        dangerouslySetInnerHTML={{ __html: data.Description }}
+                    ></div>
+                    <Link to={`/about-us`}>
+                        <div className="cta-btn position-relative bg-red px-4 py-3">
+                            <p className='text-white z-1 position-relative'>LEARN MORE</p>
+                        </div>
+                    </Link>
                 </div>
-            </div>
             </div>
         </div>
     </div>

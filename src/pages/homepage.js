@@ -142,7 +142,7 @@ const HomePage = () => {
 
       <div className="bg-gray">
         <div className="container py-5">
-          <div className="big-text text-red pb-3">Featured Products</div>
+          <div className="big-text text-blue pb-3">Featured Products</div>
           <HomeFeatureProduct data={Data.items ? Data.items : []}/>
         </div>
       </div>
