@@ -1,5 +1,6 @@
-/* LATO FONT */
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+ /* LATO FONT */
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 /* LIBRE BASKERVILLE */
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
@@ -10,7 +11,7 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 :root {
@@ -30,7 +31,8 @@
     --blue-75: #157EBAbf;
     --blue-50: #157EBA80;
     --blue-25: #157EBA40;
-    --red-linear: linear-gradient(135deg, #AA1E2C 0%, #7A333A 100%);
+    --red-linear: linear-gradient(135deg, #AA1E2C 0%, #b82c3a 100%);
+    --red-linear2: linear-gradient(90deg, rgba(170, 30, 44, 1) 0%, rgba(255, 64, 83, 1) 50%, rgba(170, 30, 44, 1) 100%);
     --blue-linear: linear-gradient(135deg, #157EBA 0%, #A5E5FF 100%);
     --dark-blue-linear: linear-gradient(135deg, #047EB0 0%, #6A8B99 100%);
     --shadow1: 0px 4px 24px 0px rgba(8, 8, 8, 0.25);
@@ -61,17 +63,21 @@
     background: var(--red-linear);
 }
 
+.bg-red2{
+    background: var(--red-linear2);
+}
+
 .bg-blue{
     background: var(--blue-linear);
 }
 
 .small-text {
-    font-family: "Lato", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 14px;
 }
 
 .normal-text {
-    font-family: "Lato", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 1rem;
     line-height: 24px;
 }
@@ -90,7 +96,7 @@
 
 .menu-text {
     font-family: "Raleway", serif;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 1rem;
 }
 
@@ -117,6 +123,7 @@ nav .top{
     color: white;
 }
 
+footer ul,
 nav ul{
     list-style-type: none;
 }
@@ -125,9 +132,24 @@ nav ul li a{
     gap: 8px;
 }
 
+nav .bottom .logo{
+    display: flex;
+    justify-content: space-between;
+}
+
 nav .bottom .logo img{
     height: 60px;
     object-fit: contain;
+}
+
+nav .bottom .logo .menu-toggle{
+    background-color: white;
+    border: none;
+}
+
+nav .bottom .logo .menu-toggle i{
+    font-size: 32px;
+    color: var(--blue);
 }
 
 nav .bottom .menu .child-1{
@@ -135,10 +157,12 @@ nav .bottom .menu .child-1{
     transition: all 0.5s ease;
 }
 
+nav .bottom .menu .child-1:focus-within,
 nav .bottom .menu .child-1:hover{
     color: var(--red);
 }
 
+nav .bottom .menu .child-1:focus-within .sub-menu,
 nav .bottom .menu .child-1:hover .sub-menu{
     visibility: visible;
     transform: translateY(26px);
@@ -160,12 +184,14 @@ nav .bottom .menu .sub-menu{
     transition: all 0.3s ease-in;
 }
 
+nav .bottom .menu .sub-menu .title:focus-within,
 nav .bottom .menu .sub-menu .title:hover{
     background-color: #eee;
 }
 
 nav .bottom .menu .sub-menu .child-2{
     position: absolute;
+    display: none;
     top: 0;
     left: 100%;
     visibility: hidden;
@@ -173,14 +199,19 @@ nav .bottom .menu .sub-menu .child-2{
     width: 100%;
 }
 
+nav .bottom .menu .sub-menu .title:focus-within .child-2,
 nav .bottom .menu .sub-menu .title:hover .child-2{
     visibility: visible;
+    display: flex;
+    flex-direction: column;
 }
 
+nav .bottom .menu .sub-menu .title:focus-within .child-2 .product-title,
 nav .bottom .menu .sub-menu .title:hover .child-2 .product-title{
     padding: 1rem;
 }
 
+nav .bottom .menu .sub-menu .title:focus-within .child-2 .product-title:focus-within,
 nav .bottom .menu .sub-menu .title:hover .child-2 .product-title:hover{
     background-color: #eee;
 }
@@ -191,10 +222,12 @@ nav .bottom .logo span{
 
 /* SEARCH BAR */
 .search input{
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-radius: 32px;
+    width: 100%;
 }
-.search input,.search button{
+
+.search input,
+.search button{
     border:1px solid;
     border-color: transparent;
     padding: 5px 10px;
@@ -207,10 +240,27 @@ nav .bottom .logo span{
     font-size: 14px;
 }
 .search button{
+    position: absolute;
+    top: 50%;
+    right: 2%;
     background: var(--red);
     color: white;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    transition: all 0.5s ease;
+}
+
+.search button:hover{
+    background: var(--blue);
+}
+
+.search button i{
+    font-size: 14px;
 }
 
 /* FOOTER */
@@ -228,25 +278,88 @@ nav .bottom .logo span{
 }
 
 /* CARD */
-.main-card{
+.product-card{
+    position: relative;
     min-height: 280px;
-    cursor: pointer;
-    transition: all 0.3s linear;
+    max-height: 280px;
+    border: 1px solid var(--blue);
+    border-radius: 1rem;
+    overflow: visible;
+    background-color: white;
+    transition: all 0.5s ease;
 }
 
-.main-card:hover{
-    scale: 1.02;
+.product-card:hover{
+    border: 1px solid var(--red);
 }
 
-.main-card .detail{
-    min-height: 80px;
+.product-card .img-wrapper{
+    min-height: 200px;
+    max-height: 200px;
+    border-radius: 1rem;
+    padding: 8px;
+}
+
+.product-card img{
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 1rem;
+}
+
+.product-card p{
     display: flex;
     align-items: center;
-    justify-content: center ;
+    justify-content: center;
+    min-height: 80px;
+    text-transform: capitalize;
+    padding: 8px;
+    text-align: center;
+    color: var(--blue);
+    transition: all 0.5s ease;
 }
 
-.main-card:hover .detail{
-    text-decoration: underline;
+.product-card:hover p{
+    color: var(--red);
+}
+
+.product-card .btn{
+    position: absolute !important;
+    z-index: 99;
+    background: var(--black-25);
+    top: 100%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+    transition: all 0.5s ease;
+}
+
+.product-card:hover .btn{
+    top: 0%;
+}
+
+.product-card .btn h6{
+    position: absolute !important;
+    background: var(--blue);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.5rem;
+    transition: all 0.5s ease;
+}
+
+.product-card .btn:hover h6{
+    background: var(--red);
+}
+
+.service-card{
+    height: 300px;
+}
+
+.service-card img{
+    height: 80px;
+    width: 80px;
 }
 
 /* SWIPPER */
@@ -268,29 +381,103 @@ nav .bottom .logo span{
 
 /* CTA BUTTON */
 .cta-btn{
+    display: block;
     width: 200px;
+    background-image: var(--red-linear2);
+    transition: 0.5s;
+    background-size: 200%;
     text-align: center;
     border-radius: 1rem;
+    transition: all 0.2s linear;
 }
 
-.cta-btn::before{
-    position: relative;
-    content: '';
-    top: 0;
-    left: -5px;
-    transition: all 0.3s ease-in-out;
-    visibility: hidden;
-    border-radius: 1rem;
+.cta-btn:hover{
+    background-position: right center;
 }
 
-.cta-btn:hover:before{
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    height: 100%;
+
+/* HOME BRAND SECTION */
+.brand-items img{
+    height: 80px;
     width: 100%;
-    border: solid 2px var(--red);
-    background: var(--blue-linear);
-    visibility: visible;
-    z-index: 0;
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+}
+
+/* Home Introduction */
+.intro img{
+    width: 100%;
+}
+
+/* RESPONSIVEness */
+
+@media (max-width:991.98px) {
+    .small-text {
+        font-family: "Poppins", sans-serif;
+        font-size: 12px;
+    }
+
+    .normal-text,
+    .menu-text,
+    .btn-text {
+        font-size: 14px;
+    }
+
+    nav .bottom .navbar .menu{
+        flex-direction: column;
+        align-items: end;
+        gap: 2rem;
+    }
+
+    nav .bottom .menu.open{
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        height: 30vh;
+    }
+
+    nav .bottom .menu .sub-menu .child-2{
+        position: relative;
+        top: 100%;
+        left: 0%;
+        z-index: 99;
+    }
+
+    .search input::placeholder{
+        font-size: 12px;
+    }
+
+    .slide div img {
+        object-fit: contain;
+    }
+
+    .MainBanner {
+        height: auto;
+    }
+}
+
+@media (max-width:535.98px) {
+    .big-text {
+        font-size: 32px;
+    }
+
+    nav .bottom .logo span,
+    nav .top .contact{
+        display: none !important;
+    }
+
+    
+    nav .bottom .logo img,
+    nav .top .search{
+        padding: 4px 0;
+    }
+    
+    nav .bottom .menu.open{
+        height: 40vh;
+    }
+
+    .feature h1{
+        padding-bottom: 32px !important;
+    }
 }

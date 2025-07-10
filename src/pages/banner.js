@@ -5,7 +5,7 @@ const Banner = (props) => {
     const banners = props.banner;
     if (banners) {
         return (
-            <div className="MainBanner">
+            <section className="MainBanner" aria-label='banner'>
                 <Carousel
                     autoPlay={true}
                     infiniteLoop={true}
@@ -14,14 +14,14 @@ const Banner = (props) => {
                     showThumbs={false}
                     interval={3000}
                 >
-                    {banners.map((banner) =>
-                        <div>
+                    {banners.map((banner, index) =>
+                        <div key={index}>
                             <img src={banner.DocPath} alt={banner.title} />
                         </div>
                     )}
 
                 </Carousel>
-            </div>
+            </section>
         );
     }
 

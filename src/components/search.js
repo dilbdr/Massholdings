@@ -9,7 +9,7 @@ const Search = () => {
         navigate(`/search/${search}`);
     }
     return (
-        <>
+        <div className='position-relative'>
             <input type="search" name="search" placeholder="Search" onChange={(e) => {
                 setSearch(e.target.value)
             }} />
@@ -42,7 +42,7 @@ const Search = () => {
                 </div>
             </div> */}
 
-        </>
+        </div>
     );
 };
 export default Search;

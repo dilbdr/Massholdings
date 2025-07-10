@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 
-const HomeFeatureProduct = ({data}) => {
+const HomeBestSeller = ({data}) => {
   return (
     <Swiper
         modules={[Navigation, Scrollbar, Autoplay]}
@@ -57,4 +57,4 @@ const HomeFeatureProduct = ({data}) => {
   )
 }
 
-export default HomeFeatureProduct
+export default HomeBestSeller

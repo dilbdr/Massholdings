@@ -12,6 +12,8 @@ const Navbar = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+
     useEffect(() => {
         (async () => {
         try {
@@ -28,11 +30,15 @@ const Navbar = () => {
         })();
     }, []);
 
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
   return (
     <nav>
         <div className="top">
             <div className="container row d-flex m-auto py-1">
-                <ul className="contact col-6 d-flex gap-4 h-auto">
+                <ul className="contact col-12 col-md-8 d-flex gap-4 h-auto">
                     <li className="phone d-flex align-items-center">
                         <Link className="d-flex align-items-center" onTouchMove="#">
                             <i className="fa-solid fa-phone"></i>{" "}
@@ -46,7 +52,7 @@ const Navbar = () => {
                         </Link>
                     </li>
                 </ul>
-                <div className="right col-6">
+                <div className="right col-12 col-md-4">
                     <div className="search d-flex justify-content-end">
                         <Search />
                     </div>
@@ -54,54 +60,54 @@ const Navbar = () => {
             </div>
         </div>
         <div className="bottom container m-auto row d-flex align-items-center py-4">
-            <div className="logo col-4">
+            <div className="logo col-lg-4">
                 <Link to="/">
                     <img src={logo} alt="Logo" />
                     <span className="header-text">Mass Holdings</span>
                 </Link>
-            </div>
-            <div className="menu col-8 d-flex justify-content-evenly">
-                {data.content?.map((menu, index) => (
-                    menu.child ? (
-                    <div key={index} className="child-1 position-relative menu-text">
-                        <Link to={'#'}>
-                            {menu.title}
-                        </Link>
-                        <div className="sub-menu">
-                                {menu.child.map((ch,index)=>(
-                                    <>
-                                        {ch.products ? (
-                                            <div className="title p-3">
-                                                <Link key={index} to={'#'}>
-                                                    {ch.title}
-                                                </Link>
-                                                <div className="child-2">
-                                                    {ch?.products?.map((item,index)=>(
-                                                        <div key={index} className="product-title small-text">
-                                                            <Link to={`../products/details/${item.slug}`}>
-                                                                {item.title}
-                                                            </Link>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        ) : (
-                                            <Link className="title p-3" key={index} to={`../products/details/${ch.slug}`}>
-                                                {ch.title}
-                                            </Link>
-                                        )}
-                                    </>
-                                ))}
-                        </div>
-                    </div>
+                <button className="menu-toggle d-lg-none" onClick={toggleMenu}>
+                    {menuOpen ? (
+                        <i className="fa-solid fa-xmark"></i>
                     ) : (
-                        <Link className="child-1 menu-text" key={index} to={menu.slug}>
+                        <i className="fa-solid fa-bars"></i>
+                    )}
+                </button>
+            </div>
+            <div className={`menu col-lg-8 d-none d-lg-flex justify-content-evenly ${menuOpen ? "open" : ""}`}>
+                {data.content?.map((menu) => (
+                    menu.child ? (
+                        <div key={menu.slug} className="child-1 position-relative menu-text">
+                        <Link to="#">{menu.title}</Link>
+                        <div className="sub-menu">
+                            {menu.child.map((ch) => (
+                            ch.products ? (
+                                <div key={ch.slug} className="title p-3 position-relative">
+                                    <Link to="#">{ch.title}</Link>
+                                    <div className="child-2">
+                                        {ch.products.map((item) => (
+                                            <div key={item.slug} className="product-title small-text">
+                                                <Link to={`../products/${item.link || item.slug}`}>
+                                                    {item.title}
+                                                </Link>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ) : (
+                                <Link className="title p-3" key={ch.slug} to={`../products/${ch.slug}`}>
+                                {ch.title}
+                                </Link>
+                            )
+                            ))}
+                        </div>
+                        </div>
+                    ) : (
+                        <Link className="child-1 menu-text" key={menu.slug} to={menu.slug}>
                             {menu.title}
                         </Link>
                     )
                 ))}
             </div>
-
         </div>
     </nav>
   )

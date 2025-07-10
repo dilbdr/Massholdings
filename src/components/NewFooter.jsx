@@ -31,12 +31,12 @@ const NewFooter = () => {
   if (loading) return "";
   if (error) return <Errors />;
   return (
-    <nav className='footer'>
-      <div className="container mx-auto pt-5 pb-2 row">
-        <div className="col-4 d-flex flex-column justify-content-start">
+    <footer className='footer' aria-label="footer">
+      <div className="container mx-auto py-5 row">
+        <div className="col-sm-12 col-md-4 col-lg-4 d-flex flex-column justify-content-start">
           <img className="w-75" src={WLOgo} alt="logo" />
         </div>
-        <div className="col-4">
+        <div className="col-sm-12 col-md-4 col-lg-4 pb-4">
           <h2 className="header-text">Quick Links:</h2>
           <ul className="menu-text d-flex flex-column gap-2">
             {data.content.map((i, value) => {
@@ -50,19 +50,19 @@ const NewFooter = () => {
             })}
           </ul>
         </div>
-        <div className="col-4 d-flex flex-column gap-4">
+        <div className="col-sm-12 col-md-4 col-lg-4 d-flex flex-column gap-4">
           <h2 className="header-text mb-0">Contact Us : </h2>
           <ul className="contact small-text d-flex flex-column gap-2">
             <li className="d-flex gap-2 align-items-center">
-              <i class="fa-solid fa-location-dot"></i>
+              <i className="fa-solid fa-location-dot"></i>
               {data.site_settings.address}
             </li>
             <li className="d-flex gap-2 align-items-center">
-              <i class="fa-solid fa-envelope-open-text"></i>
+              <i className="fa-solid fa-envelope-open-text"></i>
               {data.site_settings.email}
             </li>
             <li className="d-flex gap-2 align-items-center">
-              <i class="fa-solid fa-phone"></i>
+              <i className="fa-solid fa-phone"></i>
               {data.site_settings.telephone}
             </li>
           </ul>
@@ -92,7 +92,7 @@ const NewFooter = () => {
         Copyright &copy; {new Date().getFullYear()} Mass Holdings | All Rights
         Reserved
       </div>
-    </nav>
+    </footer>
   )}
 
 export default NewFooter

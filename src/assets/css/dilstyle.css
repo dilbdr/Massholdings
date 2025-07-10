@@ -319,14 +319,14 @@ a{
     background-color: var(--HScolor);
     padding: 50px 0px;
 }
-.sumury{
+/* .sumury{
     padding: 10px;
-}
-.sumury h1{
+} */
+/* .sumury h1{
     color: var(--SColor);
     font-size: 40px;
     font-weight: 800;
-}
+} */
 .sumury p{
   font-size: 16px;
   letter-spacing: 1px;
@@ -823,9 +823,9 @@ a{
     }
 }
 @media (max-width:425px){
-    .container{
+    /* .container{
         padding:0rem  1rem!important;
-    }
+    } */
     .DN{
         display: none;
     }

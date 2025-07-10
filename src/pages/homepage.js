@@ -10,6 +10,9 @@ import { TabTitle } from "../comon/dynamicTitle";
 import logo from "../assets/img/logo.png";
 import HomeFeatureProduct from "../components/HomeFeatureProduct";
 import HomeIntro from "../components/HomeIntro";
+import HomeServices from "../components/HomeServices";
+import HomeBrands from "../components/HomeBrands";
+import HomeBestSeller from "../components/HomeBestSeller";
 const API_URI = "https://admin.massholdings.com.np/api/home";
 const HomePage = () => {
   const { slug } = useParams();
@@ -19,99 +22,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
 
   const [error, setError] = useState(false);
-  var Tsettings = {
-    dots: false,
-    infinite: true,
-    autoplay: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-  var Bsettings = {
-    dots: false,
-    infinite: false,
-    autoplay: true,
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-  var BSsettings = {
-    dots: false,
-    infinite: false,
-    autoplay: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+  
   useEffect(() => {
     (async () => {
       try {
@@ -137,198 +48,39 @@ const HomePage = () => {
     }
   }
   return (
-    <>
+    <main>
       <Banner banner={Data.banner ? Data.banner : []} />
 
-      <div className="bg-gray">
+      <section className="feature bg-gray" aria-label="feature section">
         <div className="container py-5">
-          <div className="big-text text-blue pb-3">Featured Products</div>
+          <h1 className="big-text text-blue pb-5 text-center">Featured Products</h1>
           <HomeFeatureProduct data={Data.items ? Data.items : []}/>
         </div>
-      </div>
+      </section>
 
       <HomeIntro data={Data.about ? Data.about : []}/>
 
-      {/* <div className="CompanyIntro">
+      <HomeServices data={Data?.services} />
+
+      <HomeBrands data={Data?.brand} /> 
+
+      <section className="BestSeller" aria-label="best seller section">
         <div className="container">
           <div className="row">
-            <div className="col-sm-12 col-md-6 col-lg-6">
-              <div className="CImages">
-                <img src={Data.about.CoverImage} alt={Data.about.PageTitle} />
-              </div>
-            </div>
-            <div className="col-sm-12 col-md-6 col-lg-6">
-              <div className="CContent">
-                <h1>{Data.about.PageTitle}</h1>
-                <div
-                  className="post__content"
-                  dangerouslySetInnerHTML={{ __html: Data.about.Description }}
-                ></div>
-                <Link to={`/about-us`} className="BTNSSS">
-                  LEARN MORE
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-      <div className="MainServices">
-        <div className="container">
-          <div className="STitle">
-            <h1>Our Services</h1>
-            <p>
-              Experience seamless service excellence with{" "}
-              <span> MASS HOLDINGS PVT LTD. </span>
-            </p>
-          </div>
-          <div className="row servicesss">
-            {Data.services
-              ? Data.services.map((service) => (
-                  <div className="col-sm-12 col-md-4 col-lg-4">
-                    <div className="SBox">
-                      <div>
-                        <img
-                          src={service.DocPath}
-                          alt={service.title}
-                          height="100"
-                        ></img>
-                        <h2>{service.title}</h2>
-
-                        <p
-                          dangerouslySetInnerHTML={{
-                            __html: service.description,
-                          }}
-                        ></p>
-                      </div>
-                    </div>
-                  </div>
-                ))
-              : "No Data"}
-          </div>
-        </div>
-      </div>
-
-      <div className="MainBrand">
-        <div className="container">
-          <div className="STitle">
-            <h1>Our Brands</h1>
-          </div>
-          <div className="BItems">
-            <Slider {...Bsettings}>
-              {Data.brand
-                ? Data.brand.map((brand) => (
-                    <div>
-                      <div className="BIMGS">
-                        <img
-                          src={brand?.DocPath ? brand?.DocPath : logo}
-                          alt={brand.name}
-                        />
-                      </div>
-                    </div>
-                  ))
-                : ""}
-            </Slider>
-          </div>
-        </div>
-      </div>
-
-      <div className="BestSeller">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12 col-md-4 col-lg-3">
+            <div className="col-12">
               <div className="sumury">
-                <h1>Best Sellers</h1>
-                <p>
-                  Discover the ultimate in quality and style with our top-rated
-                  product. Join the countless satisfied customers who have made
-                  it their go-to choice.
-                </p>
+                <h1 className="big-text text-blue pb-5 text-center">Best Sellers</h1>
               </div>
             </div>
-            <div className="col-sm-12 col-md-8 col-lg-9">
-              <div className="BestBox">
-                <Slider {...BSsettings}>
-                  {Data.best_selller
-                    ? Data.best_selller.map((seller) => (
-                        <div>
-                          <div
-                            className="TItemsBox"
-                            onClick={() =>
-                              navigate(`/products/details/${seller.slug}`)
-                            }
-                          >
-                            <div className="CIMG">
-                              <img
-                                src={seller.DocPath}
-                                alt={seller.item_name}
-                              />
-                            </div>
-                            <div className="CTitle">{seller.item_name}</div>
-                          </div>
-                        </div>
-                      ))
-                    : ""}
-                </Slider>
-              </div>
+            <div className="col-12">
+              <HomeBestSeller data={Data.best_selller ? Data.best_selller : []}/>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="MainBrand">
-        <div className="container">
-          <div className="STitle">
-            <h1>Our Clients</h1>
-          </div>
-          <div className="BItems">
-            <Slider {...Bsettings}>
-              {Data.clients
-                ? Data.clients.map((client) => (
-                    <div>
-                      <div className="BIMGS">
-                        <img
-                          src={client.DocPath ? client.DocPath : logo}
-                          alt={client.name}
-                        />
-                      </div>
-                    </div>
-                  ))
-                : ""}
-            </Slider>
-          </div>
-        </div>
-      </div>
-
-      <div className="MainContact">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12 col-md-6 col-lg-6">
-              <div className="ContactBox">
-                <h1>Contact Us</h1>
-                <p>
-                  <i className="fa-solid fa-phone"></i>{" "}
-                  {Data?.site_settings?.telephone}
-                </p>
-                <p>
-                  <i className="fa-solid fa-envelope"></i>
-                  {Data?.site_settings?.email}
-                </p>
-                <p>
-                  <i className="fa-solid fa-location-dot"></i>{" "}
-                  {Data?.site_settings?.address}
-                </p>
-              </div>
-            </div>
-            <div className="col-sm-12 col-md-6 col-lg-6">
-              <div className="contMap">
-                <iframe src={Data?.site_settings?.map_location}></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+      <HomeBrands data={Data?.clients} />
+    </main>
   );
 };
 export default HomePage;
