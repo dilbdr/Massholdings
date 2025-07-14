@@ -84,7 +84,7 @@
 
 .header-text {
     font-family: "Raleway", sans-serif;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 700;
 }
 
@@ -395,6 +395,32 @@ nav .bottom .logo span{
     background-position: right center;
 }
 
+/* BREADCRUMB */
+.breadcrumb p span{
+    text-transform: capitalize;
+    margin-right: 26px;
+}
+
+.breadcrumb p span:nth-child(3)::after,
+.breadcrumb p span:nth-child(2)::after,
+.breadcrumb p span:first-child::after{
+    content: "/";
+    position: absolute;
+    margin-left: 10px;
+}
+
+.breadcrumb p span:last-child::after{
+    content: "";
+    position: absolute;
+    margin-left: 10px;
+    
+}
+
+.breadcrumb h1{
+    padding-top: 16px;
+    text-transform: capitalize;
+}
+
 
 /* HOME BRAND SECTION */
 .brand-items img{
@@ -408,6 +434,27 @@ nav .bottom .logo span{
 /* Home Introduction */
 .intro img{
     width: 100%;
+}
+
+/* CONTACT PAGE */
+.contactp{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contactp .detail{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contactp .detail i{
+    color: var(--red);
+}
+
+.mapp iframe{
+    height: 300px;
 }
 
 /* RESPONSIVEness */

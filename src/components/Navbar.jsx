@@ -94,10 +94,10 @@ const Navbar = () => {
                                     </div>
                                 </div>
                             ) : (
-                                <Link className="title p-3" key={ch.slug} to={`../products/${ch.slug}`}>
-                                {ch.title}
+                                <Link className="title p-3" key={ch.slug} to={`../products/${ch.link || ch.slug}`}>
+                                    {ch.title}
                                 </Link>
-                            )
+                            ) 
                             ))}
                         </div>
                         </div>

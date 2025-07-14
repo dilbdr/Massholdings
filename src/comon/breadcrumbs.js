@@ -6,12 +6,12 @@ const Breadcrumbs = () => {
   console.log("bred", breadcrumbs);
   const { slug } = useParams();
   return (
-    <div className="breadcrumsss">
+    <div className="breadcrumb bg-red2 py-4">
       <div className="container">
-        <div className="Breds">
+        <p className="text-white normal-text">
           {breadcrumbs.map(({ breadcrumb }) => breadcrumb)}
-        </div>
-        <div className="PageTitle">{slug.split("-").join(" ")}</div>
+        </p>
+        <h1 className="big-text text-white">{slug.split("-").join(" ")}</h1>
       </div>
     </div>
   );

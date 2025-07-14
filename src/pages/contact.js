@@ -1,8 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import logo from "../assets/img/logo.png";
+import { useEffect, useState } from "react";
 import "react-tabs/style/react-tabs.css";
-import { useParams } from "react-router-dom";
 import Loading from "../comon/loading";
 import Errors from "../comon/error";
 import Breadcrumbs from "../comon/breadcrumbs";
@@ -32,90 +30,32 @@ const Contact = () => {
   return (
     <>
       <Breadcrumbs />
-      <div className="container">
-        <div className="contact-section">
-          <div className="ContInfo">
-            <div className="cInfo">
-              <span
-                className="title-text"
-                dangerouslySetInnerHTML={{
-                  __html: content?.contact_detail
-                    ? content?.contact_detail
-                    : "No Content",
-                }}
-              ></span>
-              {/* <p>
-                <strong>
-                  {" "}
-                  <i className="fa-solid fa-phone" /> :{" "}
-                </strong>
-                {content?.mobile}
-              </p> */}
-              {/* <p>
-                <strong>
-                  {" "}
-                  <i className="fa-solid fa-envelope" /> :{" "}
-                </strong>
-                {content?.email}
-              </p> */}
-              <p>
-                {/* <strong>
-                  {" "}
-                  <i className="fa-solid fa-home" />:{" "}
-                </strong> */}
-              </p>
-            </div>
-            <div className="map">
-              <h3>Map Location</h3>
-              <iframe src={content?.map_location}></iframe>
-            </div>
-          </div>
-          {/* <div className="details">
-            
-            <div className="info">
-              
-              <div className="contact-number">
-                <div className="title-text">
-                 
+      <div className="container py-5 row m-auto">
+            <div className="col-lg-6 pb-5">
+              <h2 className="header-text text-blue pb-3">Contact Us</h2>
+              <div className="contactp">
+                <div className="detail">
+                  <i class="fa-solid fa-phone"></i>
+                  <p>{content?.telephone}</p>
                 </div>
-                <div className="title-text"></div>
-              </div>
-              <div className="email">
-                <div className="title-text">
-                  <i className="fa-solid fa-envelope" /> Email Address
+                <div className="detail">
+                  <i class="fa-solid fa-mobile-screen-button"></i>
+                  <p>{content?.mobile}</p>
                 </div>
-                <div className="title-text">{content?.email}</div>
-              </div>
-              <div className="location">
-                <div className="title-text">
-                  <i className="fa-solid fa-home" /> Location
+                <div className="detail">
+                  <i class="fa-solid fa-envelope"></i>
+                  <p>{content?.email}</p>
                 </div>
-                <div
-                  className="title-text"
-                  dangerouslySetInnerHTML={{
-                    __html: content?.contact_detail
-                      ? content?.contact_detail
-                      : "No Content",
-                  }}
-                ></div>
-              </div>
-              <div className="socials d-flex">
-                <div className="normal-text">Follow Us On:</div>
-                <div className="social-logo">
-                  <a href={content?.facebook} target="_blank">
-                    <i className="fa-brands fa-facebook" />
-                  </a>
-                  <a href={content?.instagram} target="_blank">
-                    <i className="fa-brands fa-instagram" />
-                  </a>
-                  <a href={content?.youtube} target="_blank">
-                    <i className="fa-brands fa-youtube" />
-                  </a>
+                <div className="detail">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p>{content?.address}</p>
                 </div>
               </div>
             </div>
-          </div> */}
-        </div>
+            <div className="mapp col-lg-6">
+              <h2 className="header-text text-blue pb-3">Map Location</h2>
+              <iframe className="w-100" src={content?.map_location}></iframe>
+            </div>
       </div>
     </>
   );

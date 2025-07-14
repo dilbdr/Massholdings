@@ -40,26 +40,9 @@ const ProductsDetails = () => {
     <>
       <Breadcrumbs />
 
-      {/* <div className="ProductsItemsss">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12 col-md-6 col-lg-4">
-              <div className="ItemsBox">
-                <Link to={""}>
-                  <img src={logo} alt="Products Image" />
-                </Link>
-                <Link to={""}>
-                  <h2>Items title</h2>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
       <div className="productsDetails">
         <LazyLoad>
-          <div className="container">
+          <div className="container py-5">
             <div className="row">
               <div className="col-sm-12 col-md-3 col-lg-2">
                 <div className="TabImagess">
@@ -148,17 +131,17 @@ const ProductsDetails = () => {
                         }}
                       ></div>
                     </div>
+                    <div className="specification">
+                      <h1>Specification</h1>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: data.specification
+                            ? data.specification
+                            : "No Content",
+                        }}
+                      ></div>
+                    </div>
                   </div>
-                </div>
-                <div className="specification">
-                  <h1>Specification</h1>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: data.specification
-                        ? data.specification
-                        : "No Content",
-                    }}
-                  ></div>
                 </div>
               </div>
             </div>
