@@ -37,15 +37,15 @@ const SearchPage = () => {
                         ? "No Content"
                         : Data?.map((content) => (
                             <>
-                                <div className="row">
-                                    <div className="col-sm-12 col-md-6 col-lg-8">
-                                        <div className="insideContent">
-                                            {content.slug ? <Link to={`/products/${content.slug}`}><h4>{content.title}</h4></Link> : <Link><h4>{content.title}</h4></Link>}
-
-
-                                        </div>
-                                    </div>
-                                </div>
+                                {content.slug ? 
+                                    <Link to={`/products/${content.slug}`}>
+                                        <h4 className="search-title btn-text p-4">{content.title}</h4>
+                                    </Link> 
+                                    : 
+                                    <Link>
+                                        <h4 className="search-title btn-text p-4">{content.title}</h4>
+                                    </Link>
+                                }
                             </>
                         ))}
                 </div>

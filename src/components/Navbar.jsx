@@ -13,6 +13,7 @@ const Navbar = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isSticky, setIsSticky] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -34,8 +35,21 @@ const Navbar = () => {
         setMenuOpen(!menuOpen);
     };
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 100) {
+                setIsSticky(true);
+            } else {
+                setIsSticky(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
   return (
-    <nav>
+    <nav className={isSticky ? "navbar sticky" : "navbar"}>
         <div className="top">
             <div className="container row d-flex m-auto py-1">
                 <ul className="contact col-12 col-md-8 d-flex gap-4 h-auto">
@@ -86,7 +100,7 @@ const Navbar = () => {
                                     <div className="child-2">
                                         {ch.products.map((item) => (
                                             <div key={item.slug} className="product-title small-text">
-                                                <Link to={`../products/${item.link || item.slug}`}>
+                                                <Link to={`../products/${item.link || item.slug}`} onClick={() => setMenuOpen(!menuOpen)}>
                                                     {item.title}
                                                 </Link>
                                             </div>
@@ -94,7 +108,7 @@ const Navbar = () => {
                                     </div>
                                 </div>
                             ) : (
-                                <Link className="title p-3" key={ch.slug} to={`../products/${ch.link || ch.slug}`}>
+                                <Link className="title p-3" key={ch.slug} to={`../products/${ch.link || ch.slug}`} onClick={() => setMenuOpen(!menuOpen)}>
                                     {ch.title}
                                 </Link>
                             ) 
@@ -102,7 +116,7 @@ const Navbar = () => {
                         </div>
                         </div>
                     ) : (
-                        <Link className="child-1 menu-text" key={menu.slug} to={menu.slug}>
+                        <Link className="child-1 menu-text" key={menu.slug} to={menu.slug} onClick={() => setMenuOpen(!menuOpen)}>
                             {menu.title}
                         </Link>
                     )

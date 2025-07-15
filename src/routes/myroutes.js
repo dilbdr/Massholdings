@@ -10,6 +10,7 @@ import SearchPage from "../pages/searchpage";
 import Category from "../pages/category";
 import Navbar from "../components/Navbar";
 import NewFooter from "../components/NewFooter";
+import ToTopBtn from "../comon/ToTopBtn";
 const MyRoutes = () => {
   const [loading, setLoading] = useState(true);
   const spinner = document.getElementById("spinner");
@@ -33,6 +34,7 @@ const MyRoutes = () => {
           <Route path="products/details/:slug" element={<ProductsDetails />} />
         </Routes>
         <NewFooter />
+        <ToTopBtn/>
         {/* <Footer /> */}
       </>
     )

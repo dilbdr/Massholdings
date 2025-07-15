@@ -39,6 +39,10 @@
     --shadow3: 2px 1px 8px 0px rgba(0, 0, 0, 0.50);
 }
 
+h1,h2,h3,h4,h5,h6{
+    margin-bottom: 0px !important;
+}
+
 .shadow-1{
     box-shadow: var(--shadow1);
 }
@@ -84,7 +88,7 @@
 
 .header-text {
     font-family: "Raleway", sans-serif;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
 }
 
@@ -118,9 +122,25 @@ p{
 }
 
 /* NAVBAR */
+.navbar {
+    transition: all 0.3s ease;
+    z-index: 999;    
+    background: white;
+    position: relative;
+    transition: all 0.5s ease;
+  }
+  
+  .navbar.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
 nav .top{
     background: var(--blue-linear);
     color: white;
+    width: 100%;
 }
 
 footer ul,
@@ -157,12 +177,10 @@ nav .bottom .menu .child-1{
     transition: all 0.5s ease;
 }
 
-nav .bottom .menu .child-1:focus-within,
 nav .bottom .menu .child-1:hover{
     color: var(--red);
 }
 
-nav .bottom .menu .child-1:focus-within .sub-menu,
 nav .bottom .menu .child-1:hover .sub-menu{
     visibility: visible;
     transform: translateY(26px);
@@ -184,7 +202,6 @@ nav .bottom .menu .sub-menu{
     transition: all 0.3s ease-in;
 }
 
-nav .bottom .menu .sub-menu .title:focus-within,
 nav .bottom .menu .sub-menu .title:hover{
     background-color: #eee;
 }
@@ -199,19 +216,16 @@ nav .bottom .menu .sub-menu .child-2{
     width: 100%;
 }
 
-nav .bottom .menu .sub-menu .title:focus-within .child-2,
 nav .bottom .menu .sub-menu .title:hover .child-2{
     visibility: visible;
     display: flex;
     flex-direction: column;
 }
 
-nav .bottom .menu .sub-menu .title:focus-within .child-2 .product-title,
 nav .bottom .menu .sub-menu .title:hover .child-2 .product-title{
     padding: 1rem;
 }
 
-nav .bottom .menu .sub-menu .title:focus-within .child-2 .product-title:focus-within,
 nav .bottom .menu .sub-menu .title:hover .child-2 .product-title:hover{
     background-color: #eee;
 }
@@ -233,7 +247,7 @@ nav .bottom .logo span{
     padding: 5px 10px;
   
 }
-.search input:focus{
+.search input:focus-visible{
     outline: 1px solid var(--blue);
 }
 .search input::placeholder{
@@ -398,6 +412,39 @@ nav .bottom .logo span{
     background-position: right center;
 }
 
+/* TO TOP BUTTON */
+.top-btn{
+    display: none;
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    background-color: white;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: var(--shadow1);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.top-btn.btn-show{
+    display: flex;
+}
+
+.top-btn:hover{
+    background-color: var(--red);
+}
+
+.top-btn i{
+    font-size: 1rem;
+    color: var(--red);
+    transition: all 0.4s ease;
+}
+
+.top-btn:hover i{
+    color: white;
+}
+
 /* BREADCRUMB */
 .breadcrumb p span{
     text-transform: capitalize;
@@ -423,6 +470,35 @@ nav .bottom .logo span{
     padding-top: 16px;
     text-transform: capitalize;
 }
+
+/* INFINITE SCROLL */
+.infinite-scroll-component{
+    overflow: hidden !important;
+}
+
+.infinite-loader {
+    display: flex;
+    justify-content: center;
+}
+
+.infinite-loader span{
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--red);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
 
 
 /* HOME BRAND SECTION */
@@ -460,6 +536,19 @@ nav .bottom .logo span{
     height: 300px;
 }
 
+/* SEARCH PAGE */
+.search-title{
+    color: var(--blue);
+    border-bottom: 1px solid var(--gray);
+    transition: all 0.4s ease;
+}
+
+.search-title:hover{
+    color: var(--red);
+    text-decoration: underline;
+    background-color: var(--gray);
+}
+
 /* RESPONSIVEness */
 
 @media (max-width:991.98px) {
@@ -472,6 +561,10 @@ nav .bottom .logo span{
     .menu-text,
     .btn-text {
         font-size: 14px;
+    }
+
+    nav .bottom .logo span{
+        color: var(--blue);
     }
 
     nav .bottom .navbar .menu{
