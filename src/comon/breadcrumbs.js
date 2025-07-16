@@ -6,17 +6,28 @@ const Breadcrumbs = () => {
   const breadcrumbs = useBreadcrumbs();
   const { slug } = useParams();
 
-  const formattedSlug = slug?.replace(/[0-9]/g, "").replace(/-/g, " ") || "";
+  const formattedSlug = slug
+    ? slug.replace(/[0-9]/g, "").replace(/-/g, " ")
+    : "";
 
   return (
     <div className="breadcrumb bg-red2 py-4">
       <div className="container">
         <p className="text-white normal-text">
           {breadcrumbs.map(({ breadcrumb }, index) => (
-            <span key={index}>{breadcrumb}</span>
+            <span key={index}>
+              {index > 0}
+              {React.cloneElement(breadcrumb, {
+                children: breadcrumb.props.children
+                  ?.replace(/[0-9]/g, "")
+                  .replace(/-/g, " "),
+              })}
+            </span>
           ))}
         </p>
-        <h1 className="big-text text-white">{formattedSlug}</h1>
+        {formattedSlug && (
+          <h1 className="big-text text-white">{formattedSlug}</h1>
+        )}
       </div>
     </div>
   );

@@ -38,7 +38,7 @@ const SearchPage = () => {
                         : Data?.map((content) => (
                             <>
                                 {content.slug ? 
-                                    <Link to={`/products/${content.slug}`}>
+                                    <Link to={`/products/details/${content.slug}`}>
                                         <h4 className="search-title btn-text p-4">{content.title}</h4>
                                     </Link> 
                                     : 
