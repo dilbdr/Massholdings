@@ -500,6 +500,11 @@ nav .bottom .logo span{
     }
 } 
 
+/* BANNER SECTION */
+.MainBanner{
+    height: 90vh;
+}
+
 
 /* HOME BRAND SECTION */
 .brand-items img{

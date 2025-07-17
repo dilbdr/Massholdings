@@ -13,6 +13,7 @@ import HomeIntro from "../components/HomeIntro";
 import HomeServices from "../components/HomeServices";
 import HomeBrands from "../components/HomeBrands";
 import HomeBestSeller from "../components/HomeBestSeller";
+import HomeClients from "../components/HomeClient";
 const API_URI = "https://admin.massholdings.com.np/api/home";
 const HomePage = () => {
   const { slug } = useParams();
@@ -79,7 +80,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <HomeBrands data={Data?.clients} />
+      <HomeClients data={Data?.clients} />
     </main>
   );
 };

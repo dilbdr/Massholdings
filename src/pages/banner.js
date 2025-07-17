@@ -18,16 +18,16 @@ const Banner = (props) => {
                 interval={3000}
             >
                 {banners.map((banner, index) => (
-                    <div key={index}>
+                    <div className='banner' key={index}>
                         {banner.file_type === 'video' ? (
                             <iframe 
-                            className='h-100 mb-0'
-                            width="560" 
-                            src={banner.link}
-                            title="YouTube video player" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            referrerPolicy="strict-origin-when-cross-origin" 
-                            allowFullscreen></iframe>
+                                width="560" 
+                                src={`${banner.link}&autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0`}  // 👈 Autoplay and mute
+                                title="YouTube video player" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerPolicy="strict-origin-when-cross-origin" 
+                                allowFullScreen  // 👈 camelCase in React
+                            ></iframe>
                         ) : (
                             <img src={banner.DocPath} alt={banner.title || `banner-${index}`} />
                         )}
