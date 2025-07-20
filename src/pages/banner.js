@@ -10,7 +10,7 @@ const Banner = (props) => {
     return (
         <section className="MainBanner" aria-label='banner'>
             <Carousel
-                autoPlay={true}
+                autoPlay={false}
                 infiniteLoop={true}
                 showStatus={false}
                 showIndicators={false}
@@ -21,8 +21,10 @@ const Banner = (props) => {
                     <div className='banner' key={index}>
                         {banner.file_type === 'video' ? (
                             <iframe 
-                                width="560" 
-                                src={`${banner.link}&autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0`}  // 👈 Autoplay and mute
+                                className='h-100 w-100 m-auto' 
+                                width={100}
+                                height={100}
+                                src={`${banner.link}&autoplay=1&mute=1&controls=0&modestbranding=1&rel=0`} 
                                 title="YouTube video player" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 referrerPolicy="strict-origin-when-cross-origin" 
