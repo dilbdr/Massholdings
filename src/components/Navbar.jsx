@@ -101,7 +101,7 @@ const Navbar = () => {
                                         <div className="child-2">
                                             {ch.products.map((item) => (
                                                 <div key={item.slug} className="product-title small-text">
-                                                    <Link to={`../products/${item.link || item.slug}`} onClick={() => setMenuOpen(!menuOpen)}>
+                                                    <Link target={item.link ? "_blank" : ''} to={item.link || `../products/${item.slug}`} onClick={() => setMenuOpen(!menuOpen)}>
                                                         {item.title}
                                                     </Link>
                                                 </div>
@@ -109,7 +109,7 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                 ) : (
-                                    <Link className="title p-3" key={ch.slug} to={`../products/${ch.link || ch.slug}`} onClick={() => setMenuOpen(!menuOpen)}>
+                                    <Link className="title p-3" key={ch.slug} target={ch.link ? "_blank" : ''} to={ch.link || `../products/${ch.slug}`} onClick={() => setMenuOpen(!menuOpen)}>
                                         {ch.title}
                                     </Link>
                                 ) 
