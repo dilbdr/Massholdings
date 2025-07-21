@@ -33,11 +33,11 @@ const NewFooter = () => {
   return (
     <footer className='footer' aria-label="footer">
       <div className="container mx-auto py-5 row">
-        <div className="col-sm-12 col-md-4 col-lg-4 d-flex flex-column justify-content-start">
-          <img className="w-75" src={WLOgo} alt="logo" />
+        <div className="col-sm-12 col-md-4 col-lg-4 d-flex flex-column justify-content-center">
+          <img className="w-75 h-auto" src={data?.site_settings?.logo} alt="logo" />
         </div>
         <div className="col-sm-12 col-md-4 col-lg-4 pb-4">
-          <h2 className="header-text">Quick Links:</h2>
+          <h2 className="header-text pb-4">Quick Links:</h2>
           <ul className="menu-text d-flex flex-column gap-2">
             {data.content.map((i, value) => {
               return (

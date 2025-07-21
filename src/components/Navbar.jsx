@@ -92,16 +92,16 @@ const Navbar = () => {
                     {data.content?.map((menu) => (
                         menu.child ? (
                             <div key={menu.slug} className="child-1 position-relative menu-text">
-                            <Link to="#">{menu.title}</Link>
+                            <Link to={`../../category/${menu.slug}`}>{menu.title}</Link>
                             <div className="sub-menu">
                                 {menu.child.map((ch) => (
                                 ch.products ? (
                                     <div key={ch.slug} className="title p-3 position-relative">
-                                        <Link to="#">{ch.title}</Link>
+                                        <Link to={`../category/${ch.slug}`}>{ch.title}</Link>
                                         <div className="child-2">
                                             {ch.products.map((item) => (
                                                 <div key={item.slug} className="product-title small-text">
-                                                    <Link target={item.link ? "_blank" : ''} to={item.link || `../products/${item.slug}`} onClick={() => setMenuOpen(!menuOpen)}>
+                                                    <Link target={item.link ? "_blank" : ''} to={item.link || `../../products/${item.slug}`} onClick={() => setMenuOpen(!menuOpen)}>
                                                         {item.title}
                                                     </Link>
                                                 </div>
@@ -109,7 +109,7 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                 ) : (
-                                    <Link className="title p-3" key={ch.slug} target={ch.link ? "_blank" : ''} to={ch.link || `../products/${ch.slug}`} onClick={() => setMenuOpen(!menuOpen)}>
+                                    <Link className="title p-3" key={ch.slug} target={ch.link ? "_blank" : ''} to={ch.link || `../../products/${ch.slug}`} onClick={() => setMenuOpen(!menuOpen)}>
                                         {ch.title}
                                     </Link>
                                 ) 

@@ -279,8 +279,7 @@ nav .bottom .logo span{
 
 /* FOOTER */
 .footer{
-    background: var(--red-linear);
-    color: white;
+    background: #eeeeee;
 }
 
 .footer .social i{
@@ -289,6 +288,7 @@ nav .bottom .logo span{
 
 .footer .copyright{
     background: var(--blue);
+    color: white;
 }
 
 /* CARD */
@@ -552,6 +552,16 @@ nav .bottom .logo span{
     color: var(--red);
     text-decoration: underline;
     background-color: var(--gray);
+}
+
+/* CATEGORY PAGE */
+.category-page li{
+    transition: all 0.5s ease;
+}
+
+.category-page li:hover{
+    text-decoration: underline;
+    color: var(--red);
 }
 
 /* RESPONSIVEness */
