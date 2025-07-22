@@ -22,14 +22,14 @@ const Navbar = () => {
             setError(false);
             const response = await axios.get(API_URI);
             setData(response.data);
-            console.log(data, 'Menuuu')
             setLoading(false);
         } catch (error) {
             setError(true);
             setLoading(false);
         }
-        })();
-    }, []);
+    })();
+}, []);
+console.log(data, 'Menuuu')
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
