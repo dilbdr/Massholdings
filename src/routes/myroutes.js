@@ -33,7 +33,7 @@ const MyRoutes = () => {
           <Route path="products/:slug" element={<Products />} />
           <Route path="category/:slug" element={<Category />} />
           <Route path="products/details/:slug" element={<ProductsDetails />} />
-          <Route path="news-and-updates" element={<NewsList />} />
+          <Route path="news-updates" element={<NewsList />} />
         </Routes>
         <NewFooter />
         <ToTopBtn/>
