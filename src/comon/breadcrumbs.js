@@ -8,10 +8,10 @@ const Breadcrumbs = () => {
 
   const formattedSlug = slug
     ? slug.replace(/[0-9]/g, "").replace(/-/g, " ")
-    : "";
+    : "News & Updates";
 
   return (
-    <div className="breadcrumb bg-red2 py-4">
+    <div className="breadcrumb bg-red2 py-4 mb-0">
       <div className="container">
         <p className="text-white normal-text">
           {breadcrumbs.map(({ breadcrumb }, index) => (

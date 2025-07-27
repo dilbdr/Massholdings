@@ -59,6 +59,7 @@ const ProductsDetails = () => {
                             src={image.DocPath}
                             className="card-img-top active"
                             alt={data.item_name}
+                            loading="lazy"
                           />
                         </div>
                       ))

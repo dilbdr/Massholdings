@@ -11,6 +11,8 @@ import Category from "../pages/category";
 import Navbar from "../components/Navbar";
 import NewFooter from "../components/NewFooter";
 import ToTopBtn from "../comon/ToTopBtn";
+import NewsList from "../pages/NewsList";
+import NewsDetail from "../pages/NewsDetail";
 const MyRoutes = () => {
   const [loading, setLoading] = useState(true);
   const spinner = document.getElementById("spinner");
@@ -32,6 +34,8 @@ const MyRoutes = () => {
           <Route path="products/:slug" element={<Products />} />
           <Route path="category/:slug" element={<Category />} />
           <Route path="products/details/:slug" element={<ProductsDetails />} />
+          <Route path="news-updates" element={<NewsList />} />
+          <Route path="news-updates/:slug" element={<NewsDetail />} />
         </Routes>
         <NewFooter />
         <ToTopBtn/>
