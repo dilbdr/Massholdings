@@ -518,6 +518,8 @@ nav .bottom .logo span{
 /* Home Introduction */
 .intro img{
     width: 100%;
+    height: 500px;
+    object-fit: contain;
 }
 
 /* CONTACT PAGE */
@@ -646,6 +648,46 @@ nav .bottom .logo span{
 .news-list .news-card:hover .news-detail{
     background: var(--red-linear2);
     color: var(--white);
+}
+
+/* NEWS DETAIL PAGE */
+.news-detail{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.news-detail .detail{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.news-detail .detail img{
+    height: 400px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.news-detail .detail p,
+.news-detail .detail .desc{
+    text-align: justify;
+    padding-bottom: 1rem !important;
+}
+
+.back{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.back i{
+    font-size: 20px;
+    color: var(--red);
+}
+
+.back:hover span{
+    text-decoration: underline;
 }
 
 /* RESPONSIVEness */

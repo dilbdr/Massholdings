@@ -29,7 +29,7 @@ const Navbar = () => {
         }
     })();
 }, []);
-console.log(data, 'Menuuu')
+// console.log(data, 'Menuuu')
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -49,7 +49,7 @@ console.log(data, 'Menuuu')
     }, []);
 
   return (
-    <nav>
+    <nav className="shadow-1">
         <div className="top">
             <div className="container row d-flex m-auto py-1">
                 <ul className="contact col-12 col-md-8 d-flex gap-4 h-auto">
