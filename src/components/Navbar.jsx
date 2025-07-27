@@ -49,7 +49,7 @@ const Navbar = () => {
     }, []);
 
   return (
-    <nav className="shadow-1">
+    <nav className="shadow-2">
         <div className="top">
             <div className="container row d-flex m-auto py-1">
                 <ul className="contact col-12 col-md-8 d-flex gap-4 h-auto">

@@ -216,6 +216,11 @@ nav .bottom .menu .sub-menu .child-2{
     width: 100%;
 }
 
+.navbar.sticky .menu .sub-menu .child-2{ 
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
 nav .bottom .menu .sub-menu .title:hover .child-2{
     visibility: visible;
     display: flex;
